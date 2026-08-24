@@ -11,7 +11,6 @@ export function VernyqLogo({
 }: LogoProps) {
   const primary = color === "dark" ? "#0A182E" : "#FFFFFF";
   const accent = "#0084FF";
-  const tagColor = color === "dark" ? "#0A182E" : "#FFFFFF";
 
   if (variant === "icon") {
     return (
@@ -59,9 +58,7 @@ export function VernyqLogo({
   }
 
   return (
-    <div className={`flex flex-col items-center gap-1 ${className}`}>
-      {/* Icon + Wordmark */}
-      <div className="flex items-center gap-3">
+    <div className={`flex items-center gap-3 ${className}`}>
         {/* V Icon */}
         <svg
           className="h-8 w-8 lg:h-10 lg:w-10"
@@ -85,14 +82,6 @@ export function VernyqLogo({
         >
           VERNYQ
         </span>
-      </div>
-      {/* Tagline */}
-      <span
-        className="text-[0.5rem] lg:text-[0.6rem] tracking-[0.25em] uppercase font-medium"
-        style={{ color: tagColor, opacity: 0.6, fontFamily: "Inter, sans-serif" }}
-      >
-        Cold. Clear. Powerful.
-      </span>
     </div>
   );
 }
