@@ -19,7 +19,7 @@ export function ProductCard({ product }: ProductCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {product.badge && (
-            <div className="absolute top-3 left-3 px-3 py-1 bg-[#1a1a1a] text-[#faf9f7] text-caption font-medium rounded-[0.25rem]">
+            <div className="absolute top-3 left-3 px-3 py-1 bg-[#0A182E] text-[#faf9f7] text-caption font-medium rounded-[0.25rem]">
               {product.badge}
             </div>
           )}
@@ -27,7 +27,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Info */}
         <div className="space-y-2">
-          <h3 className="text-h3 group-hover:text-[#4a7c8a] transition-colors">
+          <h3 className="text-h3 group-hover:text-[#0084FF] transition-colors">
             {product.name}
           </h3>
           <p className="text-body-sm text-[#555555] leading-relaxed">
@@ -43,7 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
           <div className="flex items-center justify-between pt-2">
             <p className="text-price">{formatPrice(product.price)}</p>
-            <span className="inline-flex items-center gap-1.5 text-body-sm font-medium text-[#4a7c8a] opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="inline-flex items-center gap-1.5 text-body-sm font-medium text-[#0084FF] opacity-0 group-hover:opacity-100 transition-opacity">
               View Details
               <ArrowRight className="size-4" />
             </span>

@@ -18,14 +18,14 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
             onClick={() => setOpenId(openId === item.id ? null : item.id)}
             className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#f3f1ee]/50 transition-colors"
           >
-            <span className="text-body font-medium text-[#1a1a1a]">
+            <span className="text-body font-medium text-[#0A182E]">
               {item.question}
             </span>
             <span className="flex-shrink-0 size-8 rounded-full border border-[#e0ddd8] flex items-center justify-center">
               {openId === item.id ? (
-                <Minus className="size-4 text-[#1a1a1a]" />
+                <Minus className="size-4 text-[#0A182E]" />
               ) : (
-                <Plus className="size-4 text-[#1a1a1a]" />
+                <Plus className="size-4 text-[#0A182E]" />
               )}
             </span>
           </button>

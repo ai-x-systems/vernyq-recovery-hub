@@ -7,7 +7,7 @@ export default function Returns() {
         <Breadcrumbs items={[{ label: "Returns" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Return Policy</h1>
+          <h1 className="text-h1 text-[#0A182E]">Return Policy</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             We want you to be satisfied with your purchase. Here's our return
             policy.
@@ -16,7 +16,7 @@ export default function Returns() {
 
         <div className="max-w-3xl pb-20 space-y-12">
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Return Window
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -26,7 +26,7 @@ export default function Returns() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Condition Requirements
             </h2>
             <ul className="space-y-2">
@@ -45,7 +45,7 @@ export default function Returns() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Return Process
             </h2>
             <div className="space-y-4">
@@ -72,11 +72,11 @@ export default function Returns() {
                 },
               ].map((item) => (
                 <div key={item.step} className="flex gap-4">
-                  <span className="text-overline text-[#4a7c8a] mt-0.5 flex-shrink-0">
+                  <span className="text-overline text-[#0084FF] mt-0.5 flex-shrink-0">
                     {item.step}
                   </span>
                   <div>
-                    <p className="text-body font-medium text-[#1a1a1a]">
+                    <p className="text-body font-medium text-[#0A182E]">
                       {item.title}
                     </p>
                     <p className="text-body-sm text-[#555555] mt-0.5">
@@ -89,7 +89,7 @@ export default function Returns() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Shipping Responsibility
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -100,7 +100,7 @@ export default function Returns() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Refund Method
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -112,7 +112,7 @@ export default function Returns() {
 
           {/* Note */}
           <div className="p-5 bg-[#b8923e]/10 border border-[#b8923e]/20 rounded-[0.5rem]">
-            <p className="text-body-sm font-medium text-[#1a1a1a]">Note</p>
+            <p className="text-body-sm font-medium text-[#0A182E]">Note</p>
             <p className="text-caption text-[#555555] mt-1">
               This return policy reflects our intended terms. Final policy
               details will be provided with your purchase. We reserve the right

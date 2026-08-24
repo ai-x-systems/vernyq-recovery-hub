@@ -15,7 +15,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb" className="py-4">
       <ol className="flex items-center flex-wrap gap-1.5 text-caption text-[#888888]">
         <li>
-          <Link to="/" className="hover:text-[#1a1a1a] transition-colors">
+          <Link to="/" className="hover:text-[#0A182E] transition-colors">
             Home
           </Link>
         </li>
@@ -25,12 +25,12 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             {item.href ? (
               <Link
                 to={item.href}
-                className="hover:text-[#1a1a1a] transition-colors"
+                className="hover:text-[#0A182E] transition-colors"
               >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-[#1a1a1a]">{item.label}</span>
+              <span className="text-[#0A182E]">{item.label}</span>
             )}
           </li>
         ))}

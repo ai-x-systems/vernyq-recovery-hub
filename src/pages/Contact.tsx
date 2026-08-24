@@ -16,7 +16,7 @@ export default function Contact() {
         <Breadcrumbs items={[{ label: "Contact" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Contact Us</h1>
+          <h1 className="text-h1 text-[#0A182E]">Contact Us</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             Have a question about our products, orders, or cold plunging in
             general? We're here to help.
@@ -27,8 +27,8 @@ export default function Contact() {
           {/* Contact info */}
           <div className="space-y-6">
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-              <Mail className="size-5 text-[#4a7c8a] mb-3" />
-              <h3 className="text-body-sm font-medium text-[#1a1a1a]">
+              <Mail className="size-5 text-[#0084FF] mb-3" />
+              <h3 className="text-body-sm font-medium text-[#0A182E]">
                 Email
               </h3>
               <p className="text-body-sm text-[#555555] mt-1">
@@ -37,8 +37,8 @@ export default function Contact() {
             </div>
 
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-              <Clock className="size-5 text-[#4a7c8a] mb-3" />
-              <h3 className="text-body-sm font-medium text-[#1a1a1a]">
+              <Clock className="size-5 text-[#0084FF] mb-3" />
+              <h3 className="text-body-sm font-medium text-[#0A182E]">
                 Response Time
               </h3>
               <p className="text-body-sm text-[#555555] mt-1">
@@ -47,8 +47,8 @@ export default function Contact() {
             </div>
 
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-              <MessageSquare className="size-5 text-[#4a7c8a] mb-3" />
-              <h3 className="text-body-sm font-medium text-[#1a1a1a]">
+              <MessageSquare className="size-5 text-[#0084FF] mb-3" />
+              <h3 className="text-body-sm font-medium text-[#0A182E]">
                 Support Categories
               </h3>
               <ul className="text-body-sm text-[#555555] mt-1 space-y-1">
@@ -68,7 +68,7 @@ export default function Contact() {
                 <div className="size-14 rounded-full bg-[#4a8a5c]/10 border border-[#4a8a5c]/20 flex items-center justify-center mx-auto mb-4">
                   <Mail className="size-7 text-[#4a8a5c]" />
                 </div>
-                <h2 className="text-h3 text-[#1a1a1a]">Message Sent</h2>
+                <h2 className="text-h3 text-[#0A182E]">Message Sent</h2>
                 <p className="text-body-sm text-[#555555] mt-2">
                   Thank you for reaching out. We'll get back to you within 1–2
                   business days.
@@ -78,33 +78,33 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Name *
                     </label>
                     <input
                       type="text"
                       required
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Email *
                     </label>
                     <input
                       type="email"
                       required
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="you@example.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                  <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                     Subject *
                   </label>
-                  <select className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] focus:outline-none focus:border-[#4a7c8a] transition-colors">
+                  <select className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF] transition-colors">
                     <option value="">Select a topic</option>
                     <option value="product">Product Question</option>
                     <option value="order">Order Status</option>
@@ -115,19 +115,19 @@ export default function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                  <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                     Message *
                   </label>
                   <textarea
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors resize-none"
                     placeholder="How can we help?"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+                  className="h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
                 >
                   Send Message
                 </button>

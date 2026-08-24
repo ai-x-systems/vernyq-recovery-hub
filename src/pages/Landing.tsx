@@ -29,7 +29,7 @@ export default function Landing() {
   return (
     <div>
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#1a1a1a] overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0A182E] overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
@@ -37,12 +37,12 @@ export default function Landing() {
             alt="Cold plunge recovery system"
             className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A182E]/90 via-[#0A182E]/70 to-transparent" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-2xl">
-            <p className="text-overline text-[#4a7c8a] mb-4">
+            <p className="text-overline text-[#0084FF] mb-4">
               Premium Recovery Systems
             </p>
             <h1 className="text-display text-[#faf9f7]">
@@ -58,7 +58,7 @@ export default function Landing() {
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <Link
                 to="/cold-plunge-tubs"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 bg-[#faf9f7] text-[#1a1a1a] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#faf9f7]/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 bg-[#faf9f7] text-[#0A182E] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#faf9f7]/90 transition-colors"
               >
                 Shop Cold Plunges
                 <ArrowRight className="size-4" />
@@ -88,32 +88,32 @@ export default function Landing() {
                 className="w-full h-full object-cover"
               />
               {flagship.badge && (
-                <div className="absolute top-4 left-4 px-3 py-1 bg-[#1a1a1a] text-[#faf9f7] text-caption font-medium rounded-[0.25rem]">
+                <div className="absolute top-4 left-4 px-3 py-1 bg-[#0A182E] text-[#faf9f7] text-caption font-medium rounded-[0.25rem]">
                   {flagship.badge}
                 </div>
               )}
             </div>
             <div>
-              <p className="text-overline text-[#4a7c8a] mb-3">Flagship</p>
-              <h2 className="text-h2 text-[#1a1a1a]">{flagship.name}</h2>
+              <p className="text-overline text-[#0084FF] mb-3">Flagship</p>
+              <h2 className="text-h2 text-[#0A182E]">{flagship.name}</h2>
               <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
                 {flagship.tagline}
               </p>
               <div className="mt-6 space-y-3">
                 <div className="flex items-center gap-3 text-body-sm text-[#555555]">
-                  <Thermometer className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                  <Thermometer className="size-4 text-[#0084FF] flex-shrink-0" />
                   {flagship.specifications["Temperature Range"]}
                 </div>
                 <div className="flex items-center gap-3 text-body-sm text-[#555555]">
-                  <Droplets className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                  <Droplets className="size-4 text-[#0084FF] flex-shrink-0" />
                   {flagship.specifications["Filtration"]}
                 </div>
                 <div className="flex items-center gap-3 text-body-sm text-[#555555]">
-                  <Zap className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                  <Zap className="size-4 text-[#0084FF] flex-shrink-0" />
                   {flagship.specifications["Power Requirement"]}
                 </div>
               </div>
-              <p className="text-price text-[#1a1a1a] mt-6">
+              <p className="text-price text-[#0A182E] mt-6">
                 {formatPrice(flagship.price)}
               </p>
               <p className="text-caption text-[#888888] mt-1">
@@ -122,13 +122,13 @@ export default function Landing() {
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 <button
                   onClick={() => addItem(flagship)}
-                  className="inline-flex items-center justify-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
                 >
                   Add to Cart
                 </button>
                 <Link
                   to={`/product/${flagship.slug}`}
-                  className="inline-flex items-center justify-center gap-2 h-12 px-8 border border-[#e0ddd8] text-[#1a1a1a] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#f3f1ee] transition-colors"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-8 border border-[#e0ddd8] text-[#0A182E] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#f3f1ee] transition-colors"
                 >
                   View Full Details
                   <ArrowRight className="size-4" />
@@ -190,10 +190,10 @@ export default function Landing() {
                 key={item.title}
                 className="bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] p-6 lg:p-8"
               >
-                <div className="size-10 rounded-[0.5rem] bg-[#4a7c8a]/10 flex items-center justify-center mb-4">
-                  <item.icon className="size-5 text-[#4a7c8a]" />
+                <div className="size-10 rounded-[0.5rem] bg-[#0084FF]/10 flex items-center justify-center mb-4">
+                  <item.icon className="size-5 text-[#0084FF]" />
                 </div>
-                <h3 className="text-h3 text-[#1a1a1a]">{item.title}</h3>
+                <h3 className="text-h3 text-[#0A182E]">{item.title}</h3>
                 <p className="text-body-sm text-[#555555] mt-2 leading-relaxed">
                   {item.description}
                 </p>
@@ -208,10 +208,10 @@ export default function Landing() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 lg:order-1">
-              <p className="text-overline text-[#4a7c8a] mb-3">
+              <p className="text-overline text-[#0084FF] mb-3">
                 The Vernyq Difference
               </p>
-              <h2 className="text-h2 text-[#1a1a1a]">
+              <h2 className="text-h2 text-[#0A182E]">
                 What Makes an All-in-One System Different
               </h2>
               <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
@@ -248,12 +248,12 @@ export default function Landing() {
                     className={`rounded-[0.5rem] p-5 border ${
                       option.dark
                         ? "border-[#e0ddd8] bg-[#faf9f7]"
-                        : "border-[#4a7c8a]/30 bg-[#4a7c8a]/5"
+                        : "border-[#0084FF]/30 bg-[#0084FF]/5"
                     }`}
                   >
                     <p
                       className={`text-body-sm font-medium ${
-                        option.dark ? "text-[#555555]" : "text-[#4a7c8a]"
+                        option.dark ? "text-[#555555]" : "text-[#0084FF]"
                       } mb-3`}
                     >
                       {option.label}
@@ -262,11 +262,11 @@ export default function Landing() {
                       {option.items.map((item) => (
                         <li
                           key={item}
-                          className="flex items-center gap-2 text-body-sm text-[#1a1a1a]"
+                          className="flex items-center gap-2 text-body-sm text-[#0A182E]"
                         >
                           <div
                             className={`size-1.5 rounded-full ${
-                              option.dark ? "bg-[#e0ddd8]" : "bg-[#4a7c8a]"
+                              option.dark ? "bg-[#e0ddd8]" : "bg-[#0084FF]"
                             }`}
                           />
                           {item}
@@ -304,7 +304,7 @@ export default function Landing() {
                 key={feature.title}
                 className="bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] p-6 lg:p-8"
               >
-                <h3 className="text-h3 text-[#1a1a1a]">{feature.title}</h3>
+                <h3 className="text-h3 text-[#0A182E]">{feature.title}</h3>
                 <p className="text-body-sm text-[#555555] mt-2 leading-relaxed">
                   {feature.description}
                 </p>
@@ -328,10 +328,10 @@ export default function Landing() {
               </div>
             </div>
             <div>
-              <p className="text-overline text-[#4a7c8a] mb-3">
+              <p className="text-overline text-[#0084FF] mb-3">
                 Your Routine
               </p>
-              <h2 className="text-h2 text-[#1a1a1a]">
+              <h2 className="text-h2 text-[#0A182E]">
                 Recovery That Fits Your Life
               </h2>
               <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
@@ -358,11 +358,11 @@ export default function Landing() {
                   },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-4">
-                    <span className="text-overline text-[#4a7c8a] mt-0.5 flex-shrink-0">
+                    <span className="text-overline text-[#0084FF] mt-0.5 flex-shrink-0">
                       {item.step}
                     </span>
                     <div>
-                      <p className="text-body font-medium text-[#1a1a1a]">
+                      <p className="text-body font-medium text-[#0A182E]">
                         {item.title}
                       </p>
                       <p className="text-body-sm text-[#555555] mt-0.5">
@@ -378,11 +378,11 @@ export default function Landing() {
       </section>
 
       {/* ===== SCIENCE ===== */}
-      <section className="py-20 lg:py-28 bg-[#1a1a1a]">
+      <section className="py-20 lg:py-28 bg-[#0A182E]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <p className="text-overline text-[#4a7c8a] mb-3">
+              <p className="text-overline text-[#0084FF] mb-3">
                 The Science
               </p>
               <h2 className="text-h2 text-[#faf9f7]">
@@ -399,7 +399,7 @@ export default function Landing() {
               </p>
               <Link
                 to="/science"
-                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#4a7c8a] mt-6 hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#0084FF] mt-6 hover:text-[#3399FF] transition-colors"
               >
                 Explore the Science
                 <ArrowRight className="size-4" />
@@ -456,7 +456,7 @@ export default function Landing() {
             <div className="text-center mt-8">
               <Link
                 to="/faq"
-                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#4a7c8a] hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#0084FF] hover:text-[#3399FF] transition-colors"
               >
                 View All FAQs
                 <ArrowRight className="size-4" />
@@ -489,7 +489,7 @@ export default function Landing() {
                   />
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-caption text-[#4a7c8a]">
+                  <span className="text-caption text-[#0084FF]">
                     {post.category}
                   </span>
                   <span className="text-caption text-[#e0ddd8]">·</span>
@@ -497,7 +497,7 @@ export default function Landing() {
                     {post.readingTime}
                   </span>
                 </div>
-                <h3 className="text-h3 text-[#1a1a1a] group-hover:text-[#4a7c8a] transition-colors">
+                <h3 className="text-h3 text-[#0A182E] group-hover:text-[#0084FF] transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-body-sm text-[#555555] mt-2 line-clamp-2">
@@ -509,7 +509,7 @@ export default function Landing() {
           <div className="text-center mt-10">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-body-sm font-medium text-[#4a7c8a] hover:text-[#6ba3b0] transition-colors"
+              className="inline-flex items-center gap-2 text-body-sm font-medium text-[#0084FF] hover:text-[#3399FF] transition-colors"
             >
               View All Articles
               <ArrowRight className="size-4" />

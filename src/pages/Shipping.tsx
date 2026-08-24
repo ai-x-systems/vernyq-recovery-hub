@@ -8,7 +8,7 @@ export default function Shipping() {
         <Breadcrumbs items={[{ label: "Shipping" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Shipping Policy</h1>
+          <h1 className="text-h1 text-[#0A182E]">Shipping Policy</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             Information about shipping, delivery, and large-item handling.
           </p>
@@ -16,7 +16,7 @@ export default function Shipping() {
 
         <div className="max-w-3xl pb-20 space-y-12">
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Shipping Regions
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -26,7 +26,7 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Shipping Cost
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -37,7 +37,7 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Processing Time
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -48,12 +48,12 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Delivery Times
             </h2>
             <div className="space-y-3">
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-                <p className="text-body-sm font-medium text-[#1a1a1a]">
+                <p className="text-body-sm font-medium text-[#0A182E]">
                   VERNYQ V1
                 </p>
                 <p className="text-body-sm text-[#555555] mt-1">
@@ -62,7 +62,7 @@ export default function Shipping() {
                 </p>
               </div>
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-                <p className="text-body-sm font-medium text-[#1a1a1a]">
+                <p className="text-body-sm font-medium text-[#0A182E]">
                   VERNYQ V1 Pro
                 </p>
                 <p className="text-body-sm text-[#555555] mt-1">
@@ -75,7 +75,7 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Large-Item Delivery
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -91,13 +91,13 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Tracking
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
               Once your order ships, you'll receive tracking information by
               email. You can also check your order status on our{" "}
-              <a href="/tracking" className="text-[#4a7c8a] hover:text-[#6ba3b0] underline">
+              <a href="/tracking" className="text-[#0084FF] hover:text-[#3399FF] underline">
                 Order Tracking
               </a>{" "}
               page.
@@ -105,7 +105,7 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Damaged Shipments
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -117,7 +117,7 @@ export default function Shipping() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Inspection Upon Delivery
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -129,7 +129,7 @@ export default function Shipping() {
 
           {/* Note */}
           <div className="p-5 bg-[#b8923e]/10 border border-[#b8923e]/20 rounded-[0.5rem]">
-            <p className="text-body-sm font-medium text-[#1a1a1a]">
+            <p className="text-body-sm font-medium text-[#0A182E]">
               Note
             </p>
             <p className="text-caption text-[#555555] mt-1">

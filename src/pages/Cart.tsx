@@ -13,20 +13,20 @@ export default function CartPage() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={[{ label: "Cart" }]} />
 
-        <h1 className="text-h1 text-[#1a1a1a] mt-4 mb-10">Your Cart</h1>
+        <h1 className="text-h1 text-[#0A182E] mt-4 mb-10">Your Cart</h1>
 
         {items.length === 0 ? (
           <div className="text-center py-32">
             <div className="size-16 rounded-full bg-[#f3f1ee] border border-[#e0ddd8] flex items-center justify-center mx-auto mb-6">
               <X className="size-8 text-[#e0ddd8]" />
             </div>
-            <h2 className="text-h3 text-[#1a1a1a] mb-2">Your cart is empty</h2>
+            <h2 className="text-h3 text-[#0A182E] mb-2">Your cart is empty</h2>
             <p className="text-body-sm text-[#888888] mb-8">
               Explore our cold plunge systems to get started.
             </p>
             <Link
               to="/cold-plunge-tubs"
-              className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+              className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
             >
               Shop Cold Plunges
             </Link>
@@ -55,7 +55,7 @@ export default function CartPage() {
                       <div>
                         <Link
                           to={`/product/${item.product.slug}`}
-                          className="text-body font-medium text-[#1a1a1a] hover:text-[#4a7c8a] transition-colors"
+                          className="text-body font-medium text-[#0A182E] hover:text-[#0084FF] transition-colors"
                         >
                           {item.product.name}
                         </Link>
@@ -81,11 +81,11 @@ export default function CartPage() {
                               item.quantity - 1
                             )
                           }
-                          className="w-9 h-9 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                          className="w-9 h-9 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                         >
                           <Minus className="size-3" />
                         </button>
-                        <span className="w-9 h-9 flex items-center justify-center text-body-sm font-medium text-[#1a1a1a] border-x border-[#e0ddd8]">
+                        <span className="w-9 h-9 flex items-center justify-center text-body-sm font-medium text-[#0A182E] border-x border-[#e0ddd8]">
                           {item.quantity}
                         </span>
                         <button
@@ -95,12 +95,12 @@ export default function CartPage() {
                               item.quantity + 1
                             )
                           }
-                          className="w-9 h-9 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                          className="w-9 h-9 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                         >
                           <Plus className="size-3" />
                         </button>
                       </div>
-                      <p className="text-body font-medium text-[#1a1a1a]">
+                      <p className="text-body font-medium text-[#0A182E]">
                         {formatPrice(item.product.price * item.quantity)}
                       </p>
                     </div>
@@ -112,11 +112,11 @@ export default function CartPage() {
             {/* Summary */}
             <div>
               <div className="sticky top-24 bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-                <h2 className="text-h3 text-[#1a1a1a] mb-6">Order Summary</h2>
+                <h2 className="text-h3 text-[#0A182E] mb-6">Order Summary</h2>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-body-sm text-[#555555]">Subtotal</span>
-                    <span className="text-body-sm text-[#1a1a1a]">
+                    <span className="text-body-sm text-[#0A182E]">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
@@ -127,10 +127,10 @@ export default function CartPage() {
                     </span>
                   </div>
                   <div className="border-t border-[#e0ddd8] pt-3 flex items-center justify-between">
-                    <span className="text-body font-medium text-[#1a1a1a]">
+                    <span className="text-body font-medium text-[#0A182E]">
                       Total
                     </span>
-                    <span className="text-h3 text-[#1a1a1a]">
+                    <span className="text-h3 text-[#0A182E]">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export default function CartPage() {
 
                 <Link
                   to="/checkout"
-                  className="flex items-center justify-center gap-2 h-12 w-full bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors mt-6"
+                  className="flex items-center justify-center gap-2 h-12 w-full bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors mt-6"
                 >
                   Proceed to Checkout
                   <ArrowRight className="size-4" />
@@ -146,7 +146,7 @@ export default function CartPage() {
 
                 <Link
                   to="/cold-plunge-tubs"
-                  className="flex items-center justify-center h-10 w-full text-body-sm text-[#555555] hover:text-[#1a1a1a] transition-colors mt-3"
+                  className="flex items-center justify-center h-10 w-full text-body-sm text-[#555555] hover:text-[#0A182E] transition-colors mt-3"
                 >
                   Continue Shopping
                 </Link>
@@ -154,13 +154,13 @@ export default function CartPage() {
                 {/* Trust */}
                 <div className="border-t border-[#e0ddd8] mt-6 pt-5 space-y-3">
                   <div className="flex items-center gap-2">
-                    <Truck className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                    <Truck className="size-4 text-[#0084FF] flex-shrink-0" />
                     <span className="text-caption text-[#888888]">
                       Free freight shipping included
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Shield className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                    <Shield className="size-4 text-[#0084FF] flex-shrink-0" />
                     <span className="text-caption text-[#888888]">
                       Manufacturer warranty on all products
                     </span>

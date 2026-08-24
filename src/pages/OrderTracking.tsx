@@ -30,7 +30,7 @@ export default function OrderTracking() {
         <Breadcrumbs items={[{ label: "Order Tracking" }]} />
 
         <div className="py-8 lg:py-12 max-w-2xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Track Your Order</h1>
+          <h1 className="text-h1 text-[#0A182E]">Track Your Order</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             Enter your order number and email to check your order status.
           </p>
@@ -39,7 +39,7 @@ export default function OrderTracking() {
         <div className="max-w-xl pb-20">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+              <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                 Order Number
               </label>
               <input
@@ -47,12 +47,12 @@ export default function OrderTracking() {
                 required
                 value={orderNumber}
                 onChange={(e) => setOrderNumber(e.target.value)}
-                className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                 placeholder="e.g., VQ-ABC123"
               />
             </div>
             <div>
-              <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+              <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                 Email Address
               </label>
               <input
@@ -60,13 +60,13 @@ export default function OrderTracking() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                 placeholder="The email used for your order"
               />
             </div>
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+              className="flex items-center justify-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
             >
               <Search className="size-4" />
               Track Order
@@ -76,9 +76,9 @@ export default function OrderTracking() {
           {submitted && (
             <div className="mt-10 bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
               <div className="flex items-center gap-3 mb-6">
-                <Package className="size-5 text-[#4a7c8a]" />
+                <Package className="size-5 text-[#0084FF]" />
                 <div>
-                  <p className="text-body font-medium text-[#1a1a1a]">
+                  <p className="text-body font-medium text-[#0A182E]">
                     Order {orderNumber}
                   </p>
                   <p className="text-caption text-[#888888]">
@@ -105,7 +105,7 @@ export default function OrderTracking() {
                       <p
                         className={`text-body-sm ${
                           i === 0
-                            ? "font-medium text-[#1a1a1a]"
+                            ? "font-medium text-[#0A182E]"
                             : "text-[#888888]"
                         }`}
                       >
@@ -133,7 +133,7 @@ export default function OrderTracking() {
               Need help?{" "}
               <Link
                 to="/contact"
-                className="text-[#4a7c8a] hover:text-[#6ba3b0] transition-colors"
+                className="text-[#0084FF] hover:text-[#3399FF] transition-colors"
               >
                 Contact Support
               </Link>

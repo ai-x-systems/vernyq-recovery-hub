@@ -10,10 +10,10 @@ export default function BlogArticle() {
   if (!post) {
     return (
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <h1 className="text-h1 text-[#1a1a1a] mb-4">Article Not Found</h1>
+        <h1 className="text-h1 text-[#0A182E] mb-4">Article Not Found</h1>
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
         >
           View All Articles
         </Link>
@@ -32,7 +32,7 @@ export default function BlogArticle() {
         return (
           <h2
             key={i}
-            className="text-h2 text-[#1a1a1a] mt-12 mb-4"
+            className="text-h2 text-[#0A182E] mt-12 mb-4"
           >
             {line.replace("## ", "")}
           </h2>
@@ -42,7 +42,7 @@ export default function BlogArticle() {
         return (
           <h3
             key={i}
-            className="text-h3 text-[#1a1a1a] mt-8 mb-3"
+            className="text-h3 text-[#0A182E] mt-8 mb-3"
           >
             {line.replace("### ", "")}
           </h3>
@@ -50,7 +50,7 @@ export default function BlogArticle() {
       }
       if (line.startsWith("**") && line.endsWith("**")) {
         return (
-          <p key={i} className="text-body font-medium text-[#1a1a1a] mt-4">
+          <p key={i} className="text-body font-medium text-[#0A182E] mt-4">
             {line.replace(/\*\*/g, "")}
           </p>
         );
@@ -105,7 +105,7 @@ export default function BlogArticle() {
         {/* Article header */}
         <div className="py-8 lg:py-12 max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
-            <span className="px-3 py-1 bg-[#4a7c8a]/10 text-[#4a7c8a] text-caption font-medium rounded-[0.25rem]">
+            <span className="px-3 py-1 bg-[#0084FF]/10 text-[#0084FF] text-caption font-medium rounded-[0.25rem]">
               {post.category}
             </span>
             <span className="text-caption text-[#888888]">
@@ -113,7 +113,7 @@ export default function BlogArticle() {
             </span>
           </div>
 
-          <h1 className="text-h1 text-[#1a1a1a]">{post.title}</h1>
+          <h1 className="text-h1 text-[#0A182E]">{post.title}</h1>
 
           <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
             {post.excerpt}
@@ -156,7 +156,7 @@ export default function BlogArticle() {
         {/* Related articles */}
         {relatedPosts.length > 0 && (
           <section className="border-t border-[#e0ddd8] py-12">
-            <h2 className="text-h2 text-[#1a1a1a] mb-8">Continue Reading</h2>
+            <h2 className="text-h2 text-[#0A182E] mb-8">Continue Reading</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {relatedPosts.map((rp) => (
                 <Link
@@ -172,11 +172,11 @@ export default function BlogArticle() {
                     />
                   </div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-caption text-[#4a7c8a]">
+                    <span className="text-caption text-[#0084FF]">
                       {rp.category}
                     </span>
                   </div>
-                  <h3 className="text-h3 text-[#1a1a1a] group-hover:text-[#4a7c8a] transition-colors">
+                  <h3 className="text-h3 text-[#0A182E] group-hover:text-[#0084FF] transition-colors">
                     {rp.title}
                   </h3>
                 </Link>
@@ -187,13 +187,13 @@ export default function BlogArticle() {
 
         {/* CTA */}
         <div className="bg-[#f3f1ee] rounded-[0.75rem] p-8 lg:p-12 text-center mb-20">
-          <h2 className="text-h2 text-[#1a1a1a]">Ready to Start Recovery?</h2>
+          <h2 className="text-h2 text-[#0A182E]">Ready to Start Recovery?</h2>
           <p className="text-body text-[#555555] mt-2 mb-6">
             Explore our all-in-one cold plunge systems.
           </p>
           <Link
             to="/cold-plunge-tubs"
-            className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+            className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
           >
             Shop Cold Plunges
             <ArrowRight className="size-4" />

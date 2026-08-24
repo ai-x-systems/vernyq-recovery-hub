@@ -35,13 +35,13 @@ export default function OrderConfirmation() {
   if (!state) {
     return (
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <h1 className="text-h1 text-[#1a1a1a] mb-4">Order Not Found</h1>
+        <h1 className="text-h1 text-[#0A182E] mb-4">Order Not Found</h1>
         <p className="text-body-lg text-[#555555] mb-8">
           We couldn't find this order. Please check your order number.
         </p>
         <Link
           to="/tracking"
-          className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
         >
           Track Your Order
         </Link>
@@ -60,7 +60,7 @@ export default function OrderConfirmation() {
             <Check className="size-7 text-[#4a8a5c]" />
           </div>
 
-          <h1 className="text-h1 text-[#1a1a1a]">Order Confirmed</h1>
+          <h1 className="text-h1 text-[#0A182E]">Order Confirmed</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             Thank you{state.firstName ? `, ${state.firstName}` : ""}. Your order
             has been received and is being reviewed.
@@ -68,14 +68,14 @@ export default function OrderConfirmation() {
 
           <div className="flex items-center gap-3 mt-4 text-body-sm">
             <span className="text-[#888888]">Order number:</span>
-            <span className="font-medium text-[#1a1a1a] font-mono">
+            <span className="font-medium text-[#0A182E] font-mono">
               {state.orderNumber}
             </span>
             <button
               onClick={() =>
                 navigator.clipboard.writeText(state.orderNumber)
               }
-              className="p-1 text-[#888888] hover:text-[#1a1a1a] transition-colors"
+              className="p-1 text-[#888888] hover:text-[#0A182E] transition-colors"
               aria-label="Copy order number"
             >
               <Copy className="size-3.5" />
@@ -90,7 +90,7 @@ export default function OrderConfirmation() {
           <div className="lg:col-span-2 space-y-8">
             {/* Order items */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <h2 className="text-h3 text-[#1a1a1a] mb-4">Order Details</h2>
+              <h2 className="text-h3 text-[#0A182E] mb-4">Order Details</h2>
               <div className="space-y-4">
                 {state.items.map((item, i) => (
                   <div
@@ -98,14 +98,14 @@ export default function OrderConfirmation() {
                     className="flex items-center justify-between py-3 border-b border-[#e0ddd8] last:border-0"
                   >
                     <div>
-                      <p className="text-body-sm font-medium text-[#1a1a1a]">
+                      <p className="text-body-sm font-medium text-[#0A182E]">
                         {item.name}
                       </p>
                       <p className="text-caption text-[#888888]">
                         Qty: {item.quantity}
                       </p>
                     </div>
-                    <p className="text-body-sm font-medium text-[#1a1a1a]">
+                    <p className="text-body-sm font-medium text-[#0A182E]">
                       {formatPrice(item.price * item.quantity)}
                     </p>
                   </div>
@@ -114,7 +114,7 @@ export default function OrderConfirmation() {
               <div className="mt-4 space-y-2 border-t border-[#e0ddd8] pt-4">
                 <div className="flex justify-between">
                   <span className="text-body-sm text-[#555555]">Subtotal</span>
-                  <span className="text-body-sm text-[#1a1a1a]">
+                  <span className="text-body-sm text-[#0A182E]">
                     {formatPrice(state.subtotal)}
                   </span>
                 </div>
@@ -123,10 +123,10 @@ export default function OrderConfirmation() {
                   <span className="text-body-sm text-[#4a8a5c]">Included</span>
                 </div>
                 <div className="flex justify-between border-t border-[#e0ddd8] pt-2">
-                  <span className="text-body font-medium text-[#1a1a1a]">
+                  <span className="text-body font-medium text-[#0A182E]">
                     Total
                   </span>
-                  <span className="text-h3 text-[#1a1a1a]">
+                  <span className="text-h3 text-[#0A182E]">
                     {formatPrice(state.total)}
                   </span>
                 </div>
@@ -135,12 +135,12 @@ export default function OrderConfirmation() {
 
             {/* Payment instructions */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <h2 className="text-h3 text-[#1a1a1a] mb-4">Payment</h2>
+              <h2 className="text-h3 text-[#0A182E] mb-4">Payment</h2>
               {state.paymentMethod === "bank_transfer" ? (
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 p-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.375rem]">
                     <div className="size-2 rounded-full bg-[#b8923e]" />
-                    <span className="text-body-sm font-medium text-[#1a1a1a]">
+                    <span className="text-body-sm font-medium text-[#0A182E]">
                       Payment Status: Pending
                     </span>
                   </div>
@@ -154,7 +154,7 @@ export default function OrderConfirmation() {
                         <span className="text-body-sm text-[#888888]">
                           Bank Name
                         </span>
-                        <span className="text-body-sm text-[#1a1a1a] font-medium">
+                        <span className="text-body-sm text-[#0A182E] font-medium">
                           [Bank Name — Provided by admin]
                         </span>
                       </div>
@@ -162,7 +162,7 @@ export default function OrderConfirmation() {
                         <span className="text-body-sm text-[#888888]">
                           Account Holder
                         </span>
-                        <span className="text-body-sm text-[#1a1a1a] font-medium">
+                        <span className="text-body-sm text-[#0A182E] font-medium">
                           [Account Name — Provided by admin]
                         </span>
                       </div>
@@ -170,7 +170,7 @@ export default function OrderConfirmation() {
                         <span className="text-body-sm text-[#888888]">
                           Transfer Reference
                         </span>
-                        <span className="text-body-sm text-[#1a1a1a] font-medium font-mono">
+                        <span className="text-body-sm text-[#0A182E] font-medium font-mono">
                           {state.orderNumber}
                         </span>
                       </div>
@@ -178,7 +178,7 @@ export default function OrderConfirmation() {
                         <span className="text-body-sm text-[#888888]">
                           Amount
                         </span>
-                        <span className="text-body-sm text-[#1a1a1a] font-medium">
+                        <span className="text-body-sm text-[#0A182E] font-medium">
                           {formatPrice(state.total)}
                         </span>
                       </div>
@@ -188,8 +188,8 @@ export default function OrderConfirmation() {
                   {/* Upload proof */}
                   <div className="border border-[#e0ddd8] rounded-[0.5rem] p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Upload className="size-4 text-[#4a7c8a]" />
-                      <span className="text-body-sm font-medium text-[#1a1a1a]">
+                      <Upload className="size-4 text-[#0084FF]" />
+                      <span className="text-body-sm font-medium text-[#0A182E]">
                         Upload Payment Proof
                       </span>
                     </div>
@@ -212,13 +212,13 @@ export default function OrderConfirmation() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 p-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.375rem]">
                     <div className="size-2 rounded-full bg-[#b8923e]" />
-                    <span className="text-body-sm font-medium text-[#1a1a1a]">
+                    <span className="text-body-sm font-medium text-[#0A182E]">
                       Payment Request Pending
                     </span>
                   </div>
                   <p className="text-body-sm text-[#555555] leading-relaxed">
                     Your payment request will be sent to{" "}
-                    <span className="font-medium text-[#1a1a1a]">
+                    <span className="font-medium text-[#0A182E]">
                       {state.email}
                     </span>{" "}
                     by email. Once you receive and complete the payment request,
@@ -235,7 +235,7 @@ export default function OrderConfirmation() {
 
             {/* Shipping */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <h2 className="text-h3 text-[#1a1a1a] mb-4">Shipping Address</h2>
+              <h2 className="text-h3 text-[#0A182E] mb-4">Shipping Address</h2>
               <p className="text-body-sm text-[#555555]">
                 {state.shippingAddress.address}
                 <br />
@@ -249,7 +249,7 @@ export default function OrderConfirmation() {
           <div>
             <div className="sticky top-24 space-y-6">
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-                <h3 className="text-h3 text-[#1a1a1a] mb-4">Order Status</h3>
+                <h3 className="text-h3 text-[#0A182E] mb-4">Order Status</h3>
                 <div className="space-y-3">
                   {[
                     { label: "Order Placed", done: true },
@@ -271,7 +271,7 @@ export default function OrderConfirmation() {
                       <span
                         className={`text-body-sm ${
                           step.done
-                            ? "text-[#1a1a1a] font-medium"
+                            ? "text-[#0A182E] font-medium"
                             : "text-[#888888]"
                         }`}
                       >
@@ -291,13 +291,13 @@ export default function OrderConfirmation() {
 
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Truck className="size-4 text-[#4a7c8a]" />
+                  <Truck className="size-4 text-[#0084FF]" />
                   <span className="text-caption text-[#888888]">
                     Free freight shipping
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield className="size-4 text-[#4a7c8a]" />
+                  <Shield className="size-4 text-[#0084FF]" />
                   <span className="text-caption text-[#888888]">
                     Manufacturer warranty included
                   </span>

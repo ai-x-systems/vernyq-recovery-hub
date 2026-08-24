@@ -13,7 +13,7 @@ export function SpecTable({ specifications }: SpecTableProps) {
           }`}
         >
           <div className="sm:w-1/3 px-5 py-3.5 bg-[#f3f1ee]">
-            <span className="text-body-sm font-medium text-[#1a1a1a]">
+            <span className="text-body-sm font-medium text-[#0A182E]">
               {key}
             </span>
           </div>

@@ -11,8 +11,8 @@ export default function About() {
 
         {/* Hero */}
         <div className="py-12 lg:py-20 max-w-3xl">
-          <p className="text-overline text-[#4a7c8a] mb-3">Our Story</p>
-          <h1 className="text-h1 text-[#1a1a1a]">
+          <p className="text-overline text-[#0084FF] mb-3">Our Story</p>
+          <h1 className="text-h1 text-[#0A182E]">
             Recovery. Engineered.
           </h1>
           <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
@@ -23,7 +23,7 @@ export default function About() {
 
         <div className="max-w-3xl pb-20">
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Why We Exist
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -40,7 +40,7 @@ export default function About() {
           </article>
 
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Our Philosophy
             </h2>
             <div className="space-y-6">
@@ -68,9 +68,9 @@ export default function About() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="border-l-2 border-[#4a7c8a] pl-6"
+                  className="border-l-2 border-[#0084FF] pl-6"
                 >
-                  <h3 className="text-h3 text-[#1a1a1a]">{item.title}</h3>
+                  <h3 className="text-h3 text-[#0A182E]">{item.title}</h3>
                   <p className="text-body-sm text-[#555555] mt-1 leading-relaxed">
                     {item.description}
                   </p>
@@ -80,7 +80,7 @@ export default function About() {
           </article>
 
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Product Quality
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -97,7 +97,7 @@ export default function About() {
                   key={item.label}
                   className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5"
                 >
-                  <p className="text-body-sm font-medium text-[#1a1a1a]">
+                  <p className="text-body-sm font-medium text-[#0A182E]">
                     {item.label}
                   </p>
                   <p className="text-caption text-[#888888] mt-1">
@@ -109,7 +109,7 @@ export default function About() {
           </article>
 
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Customer Experience
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -123,7 +123,7 @@ export default function About() {
           </article>
 
           <article>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">Our Commitment</h2>
+            <h2 className="text-h2 text-[#0A182E] mb-4">Our Commitment</h2>
             <p className="text-body text-[#555555] leading-relaxed">
               VERNYQ is committed to building products that serve our customers
               for years. We stand behind our systems with manufacturer warranties,

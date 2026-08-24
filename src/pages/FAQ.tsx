@@ -18,7 +18,7 @@ export default function FAQ() {
         <Breadcrumbs items={[{ label: "FAQ" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">
+          <h1 className="text-h1 text-[#0A182E]">
             Frequently Asked Questions
           </h1>
           <p className="text-body-lg text-[#555555] mt-3">
@@ -33,7 +33,7 @@ export default function FAQ() {
             onClick={() => setActiveCategory(null)}
             className={`px-4 py-2 text-body-sm font-medium rounded-[0.375rem] transition-colors ${
               activeCategory === null
-                ? "bg-[#1a1a1a] text-[#faf9f7]"
+                ? "bg-[#0A182E] text-[#faf9f7]"
                 : "bg-[#f3f1ee] text-[#555555] hover:bg-[#eae7e2]"
             }`}
           >
@@ -45,7 +45,7 @@ export default function FAQ() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 text-body-sm font-medium rounded-[0.375rem] transition-colors ${
                 activeCategory === cat
-                  ? "bg-[#1a1a1a] text-[#faf9f7]"
+                  ? "bg-[#0A182E] text-[#faf9f7]"
                   : "bg-[#f3f1ee] text-[#555555] hover:bg-[#eae7e2]"
               }`}
             >
@@ -66,7 +66,7 @@ export default function FAQ() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 mt-4 text-body-sm font-medium text-[#4a7c8a] hover:text-[#6ba3b0] transition-colors"
+            className="inline-flex items-center gap-2 mt-4 text-body-sm font-medium text-[#0084FF] hover:text-[#3399FF] transition-colors"
           >
             Contact Our Team
             <ArrowRight className="size-4" />

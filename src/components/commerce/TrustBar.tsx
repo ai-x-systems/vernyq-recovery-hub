@@ -31,10 +31,10 @@ export function TrustBar() {
           {trustItems.map((item) => (
             <div key={item.title} className="flex items-start gap-3">
               <div className="flex-shrink-0 size-10 rounded-[0.5rem] bg-[#faf9f7] border border-[#e0ddd8] flex items-center justify-center">
-                <item.icon className="size-5 text-[#4a7c8a]" />
+                <item.icon className="size-5 text-[#0084FF]" />
               </div>
               <div>
-                <p className="text-body-sm font-medium text-[#1a1a1a]">
+                <p className="text-body-sm font-medium text-[#0A182E]">
                   {item.title}
                 </p>
                 <p className="text-caption text-[#888888] mt-0.5">

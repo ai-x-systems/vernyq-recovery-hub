@@ -65,8 +65,8 @@
   --surface-elevated: #ffffff;
 
   /* Foreground / Text */
-  --foreground: #1a1a1a;
-  --text-primary: #1a1a1a;
+  --foreground: #0A182E;
+  --text-primary: #0A182E;
   --text-secondary: #555555;
   --text-muted: #888888;
 
@@ -76,24 +76,24 @@
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
 
-  /* Brand */
-  --primary: #1a1a1a;
-  --primary-foreground: #faf9f7;
+  /* Brand — Frost Navy primary */
+  --primary: #0A182E;
+  --primary-foreground: #ffffff;
   --secondary: #f3f1ee;
-  --secondary-foreground: #1a1a1a;
+  --secondary-foreground: #0A182E;
   --muted: #f3f1ee;
   --muted-foreground: #888888;
   --accent: #f3f1ee;
-  --accent-foreground: #1a1a1a;
+  --accent-foreground: #0A182E;
 
-  /* Accent — restrained cold-water blue */
-  --accent-blue: #4a7c8a;
-  --accent-blue-light: #6ba3b0;
+  /* Accent — Ice Blue */
+  --accent-blue: #0084FF;
+  --accent-blue-light: #3399FF;
 
   /* Borders */
   --border: #e0ddd8;
   --input: #e0ddd8;
-  --ring: #4a7c8a;
+  --ring: #0084FF;
 
   /* Status */
   --destructive: #c4544a;
@@ -101,8 +101,8 @@
   --warning: #b8923e;
 
   /* Charts (unused but required) */
-  --chart-1: #4a7c8a;
-  --chart-2: #6ba3b0;
+  --chart-1: #0084FF;
+  --chart-2: #3399FF;
   --chart-3: #888888;
   --chart-4: #c4544a;
   --chart-5: #4a8a5c;
@@ -115,7 +115,7 @@
   --sidebar-accent: #f3f1ee;
   --sidebar-accent-foreground: #1a1a1a;
   --sidebar-border: #e0ddd8;
-  --sidebar-ring: #4a7c8a;
+  --sidebar-ring: #0084FF;
 }
 
 @layer base {

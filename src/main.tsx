@@ -80,7 +80,7 @@ class RootErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-[#faf9f7] text-[#1a1a1a] p-6">
+        <div className="min-h-screen flex items-center justify-center bg-[#faf9f7] text-[#0A182E] p-6">
           <div className="max-w-lg text-center">
             <p className="text-sm font-semibold">Preview runtime error</p>
             <p className="mt-2 text-xs text-[#888888] break-words">

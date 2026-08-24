@@ -14,7 +14,7 @@ export default function Collection() {
 
         {/* Header */}
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Cold Plunge Tubs</h1>
+          <h1 className="text-h1 text-[#0A182E]">Cold Plunge Tubs</h1>
           <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
             Premium all-in-one cold plunge systems designed for serious home
             recovery. Integrated cooling, filtration, and insulation — everything
@@ -33,10 +33,10 @@ export default function Collection() {
         <section className="py-16 border-t border-[#e0ddd8]">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <p className="text-overline text-[#4a7c8a] mb-3">
+              <p className="text-overline text-[#0084FF] mb-3">
                 Why All-in-One
               </p>
-              <h2 className="text-h2 text-[#1a1a1a]">
+              <h2 className="text-h2 text-[#0A182E]">
                 Everything You Need. Nothing You Don't.
               </h2>
               <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
@@ -46,7 +46,7 @@ export default function Collection() {
               </p>
               <Link
                 to="/science"
-                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#4a7c8a] mt-6 hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-2 text-body-sm font-medium text-[#0084FF] mt-6 hover:text-[#3399FF] transition-colors"
               >
                 Learn About Cold Exposure
                 <ArrowRight className="size-4" />
@@ -63,7 +63,7 @@ export default function Collection() {
                   key={item.label}
                   className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5"
                 >
-                  <p className="text-body-sm font-medium text-[#1a1a1a]">
+                  <p className="text-body-sm font-medium text-[#0A182E]">
                     {item.label}
                   </p>
                   <p className="text-caption text-[#888888] mt-1">
@@ -103,7 +103,7 @@ export default function Collection() {
                 key={item.q}
                 className="bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] p-5"
               >
-                <p className="text-body font-medium text-[#1a1a1a]">
+                <p className="text-body font-medium text-[#0A182E]">
                   {item.q}
                 </p>
                 <p className="text-body-sm text-[#555555] mt-2">
@@ -115,7 +115,7 @@ export default function Collection() {
           <div className="text-center mt-8">
             <Link
               to="/faq"
-              className="inline-flex items-center gap-2 text-body-sm font-medium text-[#4a7c8a] hover:text-[#6ba3b0] transition-colors"
+              className="inline-flex items-center gap-2 text-body-sm font-medium text-[#0084FF] hover:text-[#3399FF] transition-colors"
             >
               View All FAQs
               <ArrowRight className="size-4" />

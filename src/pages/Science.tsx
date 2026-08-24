@@ -11,10 +11,10 @@ export default function Science() {
 
         {/* Hero */}
         <div className="py-12 lg:py-20 max-w-3xl">
-          <p className="text-overline text-[#4a7c8a] mb-3">
+          <p className="text-overline text-[#0084FF] mb-3">
             The Science of Recovery
           </p>
-          <h1 className="text-h1 text-[#1a1a1a]">
+          <h1 className="text-h1 text-[#0A182E]">
             Understanding Cold Water Immersion
           </h1>
           <p className="text-body-lg text-[#555555] mt-4 leading-relaxed">
@@ -28,7 +28,7 @@ export default function Science() {
         <div className="flex items-start gap-3 p-5 bg-[#b8923e]/10 border border-[#b8923e]/20 rounded-[0.5rem] mb-16">
           <AlertTriangle className="size-5 text-[#b8923e] flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-body-sm font-medium text-[#1a1a1a]">
+            <p className="text-body-sm font-medium text-[#0A182E]">
               Important Disclaimer
             </p>
             <p className="text-caption text-[#555555] mt-1 leading-relaxed">
@@ -46,7 +46,7 @@ export default function Science() {
         <div className="max-w-3xl pb-20">
           {/* Section: What is CWI */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               What is Cold Water Immersion?
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -64,7 +64,7 @@ export default function Science() {
 
           {/* Section: Physiological Response */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               The Physiological Response
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -94,7 +94,7 @@ export default function Science() {
                   key={item.title}
                   className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5"
                 >
-                  <h3 className="text-body font-medium text-[#1a1a1a]">
+                  <h3 className="text-body font-medium text-[#0A182E]">
                     {item.title}
                   </h3>
                   <p className="text-body-sm text-[#555555] mt-1">
@@ -107,7 +107,7 @@ export default function Science() {
 
           {/* Section: What Research Shows */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               What Does the Research Show?
             </h2>
             <p className="text-body text-[#555555] leading-relaxed mb-4">
@@ -126,7 +126,7 @@ export default function Science() {
                   key={i}
                   className="flex items-start gap-3"
                 >
-                  <div className="size-1.5 rounded-full bg-[#4a7c8a] mt-2.5 flex-shrink-0" />
+                  <div className="size-1.5 rounded-full bg-[#0084FF] mt-2.5 flex-shrink-0" />
                   <p className="text-body text-[#555555] leading-relaxed">
                     {text}
                   </p>
@@ -137,21 +137,21 @@ export default function Science() {
 
           {/* Section: Temperature & Duration */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Temperature and Duration
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-                <p className="text-overline text-[#4a7c8a] mb-2">Temperature</p>
-                <p className="text-h3 text-[#1a1a1a]">10°C – 15°C</p>
+                <p className="text-overline text-[#0084FF] mb-2">Temperature</p>
+                <p className="text-h3 text-[#0A182E]">10°C – 15°C</p>
                 <p className="text-body-sm text-[#555555] mt-2">
                   (50°F – 59°F) — commonly used range in research studies.
                   Some practitioners prefer colder temperatures.
                 </p>
               </div>
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-                <p className="text-overline text-[#4a7c8a] mb-2">Duration</p>
-                <p className="text-h3 text-[#1a1a1a]">2 – 5 minutes</p>
+                <p className="text-overline text-[#0084FF] mb-2">Duration</p>
+                <p className="text-h3 text-[#0A182E]">2 – 5 minutes</p>
                 <p className="text-body-sm text-[#555555] mt-2">
                   Common for recovery purposes. Some extend to 10–15 minutes.
                   Consistent practice matters more than extreme duration.
@@ -167,7 +167,7 @@ export default function Science() {
 
           {/* Section: Consistency */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               The Role of Consistency
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">
@@ -181,7 +181,7 @@ export default function Science() {
 
           {/* Section: Safety */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Safety Considerations
             </h2>
             <div className="space-y-3">
@@ -203,7 +203,7 @@ export default function Science() {
 
           {/* Section: Our Approach */}
           <article className="mb-16">
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               The VERNYQ Approach
             </h2>
             <p className="text-body text-[#555555] leading-relaxed">

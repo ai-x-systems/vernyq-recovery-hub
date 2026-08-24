@@ -7,7 +7,7 @@ export default function Privacy() {
         <Breadcrumbs items={[{ label: "Privacy Policy" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Privacy Policy</h1>
+          <h1 className="text-h1 text-[#0A182E]">Privacy Policy</h1>
           <p className="text-body-sm text-[#888888] mt-3">
             Last updated: January 2025
           </p>
@@ -23,7 +23,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">
+            <h2 className="text-h3 text-[#0A182E] mb-3">
               Information We Collect
             </h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
@@ -36,7 +36,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">
+            <h2 className="text-h3 text-[#0A182E] mb-3">
               How We Use Your Information
             </h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
@@ -47,7 +47,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">
+            <h2 className="text-h3 text-[#0A182E] mb-3">
               Information Sharing
             </h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
@@ -59,7 +59,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">Data Security</h2>
+            <h2 className="text-h3 text-[#0A182E] mb-3">Data Security</h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
               We implement reasonable security measures to protect your
               personal information. However, no method of transmission over
@@ -68,7 +68,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">Your Rights</h2>
+            <h2 className="text-h3 text-[#0A182E] mb-3">Your Rights</h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
               You may access, update, or delete your personal information by
               contacting us. You may also opt out of non-essential
@@ -77,7 +77,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">Cookies</h2>
+            <h2 className="text-h3 text-[#0A182E] mb-3">Cookies</h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
               Our website uses essential cookies to maintain functionality.
               We do not use advertising or tracking cookies without your
@@ -86,7 +86,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-h3 text-[#1a1a1a] mb-3">Contact</h2>
+            <h2 className="text-h3 text-[#0A182E] mb-3">Contact</h2>
             <p className="text-body-sm text-[#555555] leading-relaxed">
               For privacy-related inquiries, please contact us at
               support@vernyc.com.

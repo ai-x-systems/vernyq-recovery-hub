@@ -31,13 +31,13 @@ export default function ProductDetail() {
   if (!product) {
     return (
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <h1 className="text-h1 text-[#1a1a1a] mb-4">Product Not Found</h1>
+        <h1 className="text-h1 text-[#0A182E] mb-4">Product Not Found</h1>
         <p className="text-body-lg text-[#555555] mb-8">
           The product you're looking for doesn't exist.
         </p>
         <Link
           to="/cold-plunge-tubs"
-          className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
         >
           View All Products
         </Link>
@@ -78,7 +78,7 @@ export default function ProductDetail() {
                   onClick={() => setSelectedImage(i)}
                   className={`aspect-square rounded-[0.375rem] overflow-hidden border-2 transition-colors ${
                     selectedImage === i
-                      ? "border-[#1a1a1a]"
+                      ? "border-[#0A182E]"
                       : "border-transparent hover:border-[#e0ddd8]"
                   }`}
                 >
@@ -95,17 +95,17 @@ export default function ProductDetail() {
           {/* Product Info */}
           <div className="lg:py-4">
             {product.badge && (
-              <span className="inline-block px-3 py-1 bg-[#4a7c8a]/10 text-[#4a7c8a] text-caption font-medium rounded-[0.25rem] mb-3">
+              <span className="inline-block px-3 py-1 bg-[#0084FF]/10 text-[#0084FF] text-caption font-medium rounded-[0.25rem] mb-3">
                 {product.badge}
               </span>
             )}
-            <h1 className="text-h1 text-[#1a1a1a]">{product.name}</h1>
+            <h1 className="text-h1 text-[#0A182E]">{product.name}</h1>
             <p className="text-body-lg text-[#555555] mt-3 leading-relaxed">
               {product.tagline}
             </p>
 
             <div className="mt-6 flex items-baseline gap-3">
-              <span className="text-price text-[#1a1a1a]">
+              <span className="text-price text-[#0A182E]">
                 {formatPrice(product.price)}
               </span>
               {product.compareAtPrice && (
@@ -132,9 +132,9 @@ export default function ProductDetail() {
                 .slice(0, 4)
                 .map(([key, value]) => (
                   <div key={key} className="flex items-center gap-2">
-                    <Check className="size-4 text-[#4a7c8a] flex-shrink-0" />
+                    <Check className="size-4 text-[#0084FF] flex-shrink-0" />
                     <span className="text-body-sm text-[#555555]">
-                      <span className="text-[#1a1a1a] font-medium">{key}:</span>{" "}
+                      <span className="text-[#0A182E] font-medium">{key}:</span>{" "}
                       {value}
                     </span>
                   </div>
@@ -144,22 +144,22 @@ export default function ProductDetail() {
             {/* Quantity + Add to Cart */}
             <div className="mt-8 space-y-3">
               <div className="flex items-center gap-4">
-                <label className="text-body-sm font-medium text-[#1a1a1a]">
+                <label className="text-body-sm font-medium text-[#0A182E]">
                   Quantity
                 </label>
                 <div className="flex items-center border border-[#e0ddd8] rounded-[0.375rem]">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                   >
                     <Minus className="size-4" />
                   </button>
-                  <span className="w-10 h-10 flex items-center justify-center text-body-sm font-medium text-[#1a1a1a] border-x border-[#e0ddd8]">
+                  <span className="w-10 h-10 flex items-center justify-center text-body-sm font-medium text-[#0A182E] border-x border-[#e0ddd8]">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-10 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                   >
                     <Plus className="size-4" />
                   </button>
@@ -169,7 +169,7 @@ export default function ProductDetail() {
               <button
                 onClick={() => addItem(product, quantity)}
                 disabled={!product.inStock}
-                className="w-full h-12 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full h-12 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Add to Cart — {formatPrice(product.price * quantity)}
               </button>
@@ -195,7 +195,7 @@ export default function ProductDetail() {
                   key={item.label}
                   className="flex items-center gap-2 text-caption text-[#888888]"
                 >
-                  <item.icon className="size-4 text-[#4a7c8a]" />
+                  <item.icon className="size-4 text-[#0084FF]" />
                   {item.label}
                 </div>
               ))}
@@ -219,8 +219,8 @@ export default function ProductDetail() {
                 key={item}
                 className="flex items-center gap-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] px-4 py-3"
               >
-                <Check className="size-4 text-[#4a7c8a] flex-shrink-0" />
-                <span className="text-body-sm text-[#1a1a1a]">{item}</span>
+                <Check className="size-4 text-[#0084FF] flex-shrink-0" />
+                <span className="text-body-sm text-[#0A182E]">{item}</span>
               </div>
             ))}
           </div>
@@ -232,11 +232,11 @@ export default function ProductDetail() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
-              <p className="text-overline text-[#4a7c8a] mb-3">Specifications</p>
-              <h2 className="text-h2 text-[#1a1a1a]">Technical Details</h2>
+              <p className="text-overline text-[#0084FF] mb-3">Specifications</p>
+              <h2 className="text-h2 text-[#0A182E]">Technical Details</h2>
               {product.dimensions && (
                 <p className="text-body-sm text-[#555555] mt-4">
-                  <span className="font-medium text-[#1a1a1a]">Dimensions:</span>{" "}
+                  <span className="font-medium text-[#0A182E]">Dimensions:</span>{" "}
                   {product.dimensions}
                 </p>
               )}
@@ -262,7 +262,7 @@ export default function ProductDetail() {
                 key={feature.title}
                 className="bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] p-6 lg:p-8"
               >
-                <h3 className="text-h3 text-[#1a1a1a]">{feature.title}</h3>
+                <h3 className="text-h3 text-[#0A182E]">{feature.title}</h3>
                 <p className="text-body-sm text-[#555555] mt-2 leading-relaxed">
                   {feature.description}
                 </p>
@@ -277,8 +277,8 @@ export default function ProductDetail() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <Truck className="size-6 text-[#4a7c8a] mb-4" />
-              <h3 className="text-h3 text-[#1a1a1a]">Shipping</h3>
+              <Truck className="size-6 text-[#0084FF] mb-4" />
+              <h3 className="text-h3 text-[#0A182E]">Shipping</h3>
               <p className="text-body-sm text-[#555555] mt-2">
                 Estimated delivery: {product.shipping.estimated}
               </p>
@@ -287,14 +287,14 @@ export default function ProductDetail() {
               </p>
               <Link
                 to="/shipping"
-                className="inline-flex items-center gap-1 text-caption text-[#4a7c8a] mt-3 hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-1 text-caption text-[#0084FF] mt-3 hover:text-[#3399FF] transition-colors"
               >
                 Shipping details <ArrowRight className="size-3" />
               </Link>
             </div>
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <Shield className="size-6 text-[#4a7c8a] mb-4" />
-              <h3 className="text-h3 text-[#1a1a1a]">Warranty</h3>
+              <Shield className="size-6 text-[#0084FF] mb-4" />
+              <h3 className="text-h3 text-[#0A182E]">Warranty</h3>
               <p className="text-body-sm text-[#555555] mt-2">
                 {product.warranty.duration} manufacturer warranty
               </p>
@@ -303,14 +303,14 @@ export default function ProductDetail() {
               </p>
               <Link
                 to="/warranty"
-                className="inline-flex items-center gap-1 text-caption text-[#4a7c8a] mt-3 hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-1 text-caption text-[#0084FF] mt-3 hover:text-[#3399FF] transition-colors"
               >
                 Warranty details <ArrowRight className="size-3" />
               </Link>
             </div>
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-              <RotateCcw className="size-6 text-[#4a7c8a] mb-4" />
-              <h3 className="text-h3 text-[#1a1a1a]">Returns</h3>
+              <RotateCcw className="size-6 text-[#0084FF] mb-4" />
+              <h3 className="text-h3 text-[#0A182E]">Returns</h3>
               <p className="text-body-sm text-[#555555] mt-2">
                 30-day return window from delivery date
               </p>
@@ -319,7 +319,7 @@ export default function ProductDetail() {
               </p>
               <Link
                 to="/returns"
-                className="inline-flex items-center gap-1 text-caption text-[#4a7c8a] mt-3 hover:text-[#6ba3b0] transition-colors"
+                className="inline-flex items-center gap-1 text-caption text-[#0084FF] mt-3 hover:text-[#3399FF] transition-colors"
               >
                 Return policy <ArrowRight className="size-3" />
               </Link>

@@ -7,7 +7,7 @@ export default function Warranty() {
         <Breadcrumbs items={[{ label: "Warranty" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Warranty Policy</h1>
+          <h1 className="text-h1 text-[#0A182E]">Warranty Policy</h1>
           <p className="text-body-lg text-[#555555] mt-3">
             Our manufacturer warranty covers your VERNYQ system against
             manufacturing defects.
@@ -16,12 +16,12 @@ export default function Warranty() {
 
         <div className="max-w-3xl pb-20 space-y-12">
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               Warranty Coverage
             </h2>
             <div className="space-y-3">
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-                <p className="text-body-sm font-medium text-[#1a1a1a]">
+                <p className="text-body-sm font-medium text-[#0A182E]">
                   VERNYQ V1 — 1-Year Manufacturer Warranty
                 </p>
                 <p className="text-body-sm text-[#555555] mt-1">
@@ -30,7 +30,7 @@ export default function Warranty() {
                 </p>
               </div>
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-5">
-                <p className="text-body-sm font-medium text-[#1a1a1a]">
+                <p className="text-body-sm font-medium text-[#0A182E]">
                   VERNYQ V1 Pro — 2-Year Manufacturer Warranty
                 </p>
                 <p className="text-body-sm text-[#555555] mt-1">
@@ -43,7 +43,7 @@ export default function Warranty() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               What Is Covered
             </h2>
             <ul className="space-y-2">
@@ -65,7 +65,7 @@ export default function Warranty() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               What Is Not Covered
             </h2>
             <ul className="space-y-2">
@@ -88,7 +88,7 @@ export default function Warranty() {
           </section>
 
           <section>
-            <h2 className="text-h2 text-[#1a1a1a] mb-4">
+            <h2 className="text-h2 text-[#0A182E] mb-4">
               How to Make a Claim
             </h2>
             <div className="space-y-4">
@@ -115,11 +115,11 @@ export default function Warranty() {
                 },
               ].map((item) => (
                 <div key={item.step} className="flex gap-4">
-                  <span className="text-overline text-[#4a7c8a] mt-0.5 flex-shrink-0">
+                  <span className="text-overline text-[#0084FF] mt-0.5 flex-shrink-0">
                     {item.step}
                   </span>
                   <div>
-                    <p className="text-body font-medium text-[#1a1a1a]">
+                    <p className="text-body font-medium text-[#0A182E]">
                       {item.title}
                     </p>
                     <p className="text-body-sm text-[#555555] mt-0.5">
@@ -133,7 +133,7 @@ export default function Warranty() {
 
           {/* Note */}
           <div className="p-5 bg-[#b8923e]/10 border border-[#b8923e]/20 rounded-[0.5rem]">
-            <p className="text-body-sm font-medium text-[#1a1a1a]">Note</p>
+            <p className="text-body-sm font-medium text-[#0A182E]">Note</p>
             <p className="text-caption text-[#555555] mt-1">
               This warranty policy reflects our intended coverage. Final warranty
               terms may be updated and will be provided with your purchase.

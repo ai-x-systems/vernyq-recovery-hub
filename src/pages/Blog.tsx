@@ -26,8 +26,8 @@ export default function Blog() {
         <Breadcrumbs items={[{ label: "Journal" }]} />
 
         <div className="py-8 lg:py-12 max-w-3xl">
-          <p className="text-overline text-[#4a7c8a] mb-3">Journal</p>
-          <h1 className="text-h1 text-[#1a1a1a]">
+          <p className="text-overline text-[#0084FF] mb-3">Journal</p>
+          <h1 className="text-h1 text-[#0A182E]">
             Research, Recovery & Education
           </h1>
           <p className="text-body-lg text-[#555555] mt-3">
@@ -44,7 +44,7 @@ export default function Blog() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-10 pr-4 bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+              className="w-full h-10 pl-10 pr-4 bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
               placeholder="Search articles..."
             />
           </div>
@@ -56,7 +56,7 @@ export default function Blog() {
             onClick={() => setActiveCategory(null)}
             className={`px-4 py-2 text-body-sm font-medium rounded-[0.375rem] transition-colors ${
               activeCategory === null
-                ? "bg-[#1a1a1a] text-[#faf9f7]"
+                ? "bg-[#0A182E] text-[#faf9f7]"
                 : "bg-[#f3f1ee] text-[#555555] hover:bg-[#eae7e2]"
             }`}
           >
@@ -68,7 +68,7 @@ export default function Blog() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 text-body-sm font-medium rounded-[0.375rem] transition-colors ${
                 activeCategory === cat
-                  ? "bg-[#1a1a1a] text-[#faf9f7]"
+                  ? "bg-[#0A182E] text-[#faf9f7]"
                   : "bg-[#f3f1ee] text-[#555555] hover:bg-[#eae7e2]"
               }`}
             >
@@ -93,7 +93,7 @@ export default function Blog() {
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-caption text-[#4a7c8a]">
+                  <span className="text-caption text-[#0084FF]">
                     {featuredPost.category}
                   </span>
                   <span className="text-caption text-[#e0ddd8]">·</span>
@@ -101,13 +101,13 @@ export default function Blog() {
                     {featuredPost.readingTime}
                   </span>
                 </div>
-                <h2 className="text-h2 text-[#1a1a1a] group-hover:text-[#4a7c8a] transition-colors">
+                <h2 className="text-h2 text-[#0A182E] group-hover:text-[#0084FF] transition-colors">
                   {featuredPost.title}
                 </h2>
                 <p className="text-body text-[#555555] mt-3 leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
-                <div className="flex items-center gap-2 mt-4 text-body-sm font-medium text-[#4a7c8a]">
+                <div className="flex items-center gap-2 mt-4 text-body-sm font-medium text-[#0084FF]">
                   Read Article
                   <ArrowRight className="size-4" />
                 </div>
@@ -133,7 +133,7 @@ export default function Blog() {
                   />
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-caption text-[#4a7c8a]">
+                  <span className="text-caption text-[#0084FF]">
                     {post.category}
                   </span>
                   <span className="text-caption text-[#e0ddd8]">·</span>
@@ -141,7 +141,7 @@ export default function Blog() {
                     {post.readingTime}
                   </span>
                 </div>
-                <h3 className="text-h3 text-[#1a1a1a] group-hover:text-[#4a7c8a] transition-colors">
+                <h3 className="text-h3 text-[#0A182E] group-hover:text-[#0084FF] transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-body-sm text-[#555555] mt-2 line-clamp-2">
@@ -154,7 +154,7 @@ export default function Blog() {
 
         {filteredPosts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-h3 text-[#1a1a1a] mb-2">No articles found</p>
+            <p className="text-h3 text-[#0A182E] mb-2">No articles found</p>
             <p className="text-body-sm text-[#888888]">
               Try a different search term or category.
             </p>

@@ -77,10 +77,10 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <h1 className="text-h1 text-[#1a1a1a] mb-4">No Items in Cart</h1>
+        <h1 className="text-h1 text-[#0A182E] mb-4">No Items in Cart</h1>
         <Link
           to="/cold-plunge-tubs"
-          className="inline-flex items-center gap-2 h-12 px-8 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
         >
           Shop Cold Plunges
         </Link>
@@ -94,7 +94,7 @@ export default function Checkout() {
         <Breadcrumbs items={[{ label: "Checkout" }]} />
 
         <div className="py-8 lg:py-12 max-w-2xl">
-          <h1 className="text-h1 text-[#1a1a1a]">Checkout</h1>
+          <h1 className="text-h1 text-[#0A182E]">Checkout</h1>
           <p className="text-body-sm text-[#888888] mt-2 flex items-center gap-2">
             <Lock className="size-3.5" />
             Secure checkout · Guest only — no account required
@@ -106,12 +106,12 @@ export default function Checkout() {
             <div className="lg:col-span-2 space-y-10">
               {/* Customer Information */}
               <div>
-                <h2 className="text-h3 text-[#1a1a1a] mb-6">
+                <h2 className="text-h3 text-[#0A182E] mb-6">
                   Customer Information
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       First Name *
                     </label>
                     <input
@@ -119,12 +119,12 @@ export default function Checkout() {
                       required
                       value={form.firstName}
                       onChange={(e) => updateForm("firstName", e.target.value)}
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="First name"
                     />
                   </div>
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Last Name *
                     </label>
                     <input
@@ -132,12 +132,12 @@ export default function Checkout() {
                       required
                       value={form.lastName}
                       onChange={(e) => updateForm("lastName", e.target.value)}
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="Last name"
                     />
                   </div>
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -145,19 +145,19 @@ export default function Checkout() {
                       required
                       value={form.email}
                       onChange={(e) => updateForm("email", e.target.value)}
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="you@example.com"
                     />
                   </div>
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Phone
                     </label>
                     <input
                       type="tel"
                       value={form.phone}
                       onChange={(e) => updateForm("phone", e.target.value)}
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="(555) 000-0000"
                     />
                   </div>
@@ -166,12 +166,12 @@ export default function Checkout() {
 
               {/* Shipping Address */}
               <div>
-                <h2 className="text-h3 text-[#1a1a1a] mb-6">
+                <h2 className="text-h3 text-[#0A182E] mb-6">
                   Shipping Address
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                    <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                       Street Address *
                     </label>
                     <input
@@ -179,13 +179,13 @@ export default function Checkout() {
                       required
                       value={form.address}
                       onChange={(e) => updateForm("address", e.target.value)}
-                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                      className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                       placeholder="123 Main Street"
                     />
                   </div>
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                      <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                         City *
                       </label>
                       <input
@@ -193,12 +193,12 @@ export default function Checkout() {
                         required
                         value={form.city}
                         onChange={(e) => updateForm("city", e.target.value)}
-                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                         placeholder="City"
                       />
                     </div>
                     <div>
-                      <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                      <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                         State *
                       </label>
                       <input
@@ -206,12 +206,12 @@ export default function Checkout() {
                         required
                         value={form.state}
                         onChange={(e) => updateForm("state", e.target.value)}
-                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                         placeholder="State"
                       />
                     </div>
                     <div>
-                      <label className="text-body-sm font-medium text-[#1a1a1a] block mb-1.5">
+                      <label className="text-body-sm font-medium text-[#0A182E] block mb-1.5">
                         ZIP Code *
                       </label>
                       <input
@@ -219,7 +219,7 @@ export default function Checkout() {
                         required
                         value={form.zip}
                         onChange={(e) => updateForm("zip", e.target.value)}
-                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#1a1a1a] placeholder:text-[#888888] focus:outline-none focus:border-[#4a7c8a] transition-colors"
+                        className="w-full h-11 px-4 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF] transition-colors"
                         placeholder="ZIP"
                       />
                     </div>
@@ -229,7 +229,7 @@ export default function Checkout() {
 
               {/* Payment Method */}
               <div>
-                <h2 className="text-h3 text-[#1a1a1a] mb-6">Payment Method</h2>
+                <h2 className="text-h3 text-[#0A182E] mb-6">Payment Method</h2>
                 <div className="space-y-3">
                   {[
                     {
@@ -249,7 +249,7 @@ export default function Checkout() {
                       key={method.id}
                       className={`flex items-start gap-4 p-5 border rounded-[0.5rem] cursor-pointer transition-colors ${
                         form.paymentMethod === method.id
-                          ? "border-[#4a7c8a] bg-[#4a7c8a]/5"
+                          ? "border-[#0084FF] bg-[#0084FF]/5"
                           : "border-[#e0ddd8] hover:border-[#ccc]"
                       }`}
                     >
@@ -264,10 +264,10 @@ export default function Checkout() {
                             e.target.value as PaymentMethod
                           )
                         }
-                        className="mt-0.5 accent-[#4a7c8a]"
+                        className="mt-0.5 accent-[#0084FF]"
                       />
                       <div>
-                        <p className="text-body-sm font-medium text-[#1a1a1a]">
+                        <p className="text-body-sm font-medium text-[#0A182E]">
                           {method.title}
                         </p>
                         <p className="text-caption text-[#888888] mt-0.5">
@@ -283,7 +283,7 @@ export default function Checkout() {
             {/* Order Summary */}
             <div>
               <div className="sticky top-24 bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
-                <h2 className="text-h3 text-[#1a1a1a] mb-6">Your Order</h2>
+                <h2 className="text-h3 text-[#0A182E] mb-6">Your Order</h2>
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
                     <div key={item.product.id} className="flex items-center gap-3">
@@ -295,14 +295,14 @@ export default function Checkout() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-body-sm font-medium text-[#1a1a1a] truncate">
+                        <p className="text-body-sm font-medium text-[#0A182E] truncate">
                           {item.product.name}
                         </p>
                         <p className="text-caption text-[#888888]">
                           Qty: {item.quantity}
                         </p>
                       </div>
-                      <p className="text-body-sm font-medium text-[#1a1a1a]">
+                      <p className="text-body-sm font-medium text-[#0A182E]">
                         {formatPrice(item.product.price * item.quantity)}
                       </p>
                     </div>
@@ -312,7 +312,7 @@ export default function Checkout() {
                 <div className="space-y-3 border-t border-[#e0ddd8] pt-4">
                   <div className="flex justify-between">
                     <span className="text-body-sm text-[#555555]">Subtotal</span>
-                    <span className="text-body-sm text-[#1a1a1a]">
+                    <span className="text-body-sm text-[#0A182E]">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
@@ -323,10 +323,10 @@ export default function Checkout() {
                     </span>
                   </div>
                   <div className="flex justify-between border-t border-[#e0ddd8] pt-3">
-                    <span className="text-body font-medium text-[#1a1a1a]">
+                    <span className="text-body font-medium text-[#0A182E]">
                       Total
                     </span>
-                    <span className="text-h3 text-[#1a1a1a]">
+                    <span className="text-h3 text-[#0A182E]">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
@@ -335,7 +335,7 @@ export default function Checkout() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 h-12 w-full bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors mt-6 disabled:opacity-50"
+                  className="flex items-center justify-center gap-2 h-12 w-full bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors mt-6 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     "Processing..."
@@ -356,11 +356,11 @@ export default function Checkout() {
 
                 <p className="text-caption text-[#888888] text-center mt-4 leading-relaxed">
                   By placing this order, you agree to our{" "}
-                  <Link to="/terms" className="underline hover:text-[#1a1a1a]">
+                  <Link to="/terms" className="underline hover:text-[#0A182E]">
                     Terms
                   </Link>{" "}
                   and{" "}
-                  <Link to="/privacy" className="underline hover:text-[#1a1a1a]">
+                  <Link to="/privacy" className="underline hover:text-[#0A182E]">
                     Privacy Policy
                   </Link>
                   .

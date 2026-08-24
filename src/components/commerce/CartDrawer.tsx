@@ -17,13 +17,13 @@ export function CartDrawer() {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#e0ddd8]">
           <div className="flex items-center gap-3">
-            <ShoppingBag className="size-5 text-[#1a1a1a]" />
+            <ShoppingBag className="size-5 text-[#0A182E]" />
             <h2 className="text-h3">Cart</h2>
             <span className="text-body-sm text-[#888888]">({itemCount})</span>
           </div>
           <button
             onClick={closeCart}
-            className="p-2 text-[#555555] hover:text-[#1a1a1a] transition-colors"
+            className="p-2 text-[#555555] hover:text-[#0A182E] transition-colors"
             aria-label="Close cart"
           >
             <X className="size-5" />
@@ -42,7 +42,7 @@ export function CartDrawer() {
               <Link
                 to="/cold-plunge-tubs"
                 onClick={closeCart}
-                className="inline-flex items-center justify-center h-10 px-6 bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+                className="inline-flex items-center justify-center h-10 px-6 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
               >
                 Shop Cold Plunges
               </Link>
@@ -64,7 +64,7 @@ export function CartDrawer() {
                         <Link
                           to={`/product/${item.product.slug}`}
                           onClick={closeCart}
-                          className="text-body-sm font-medium text-[#1a1a1a] hover:text-[#4a7c8a] transition-colors"
+                          className="text-body-sm font-medium text-[#0A182E] hover:text-[#0084FF] transition-colors"
                         >
                           {item.product.name}
                         </Link>
@@ -86,25 +86,25 @@ export function CartDrawer() {
                           onClick={() =>
                             updateQuantity(item.product.id, item.quantity - 1)
                           }
-                          className="w-8 h-8 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="size-3" />
                         </button>
-                        <span className="w-8 h-8 flex items-center justify-center text-body-sm font-medium text-[#1a1a1a] border-x border-[#e0ddd8]">
+                        <span className="w-8 h-8 flex items-center justify-center text-body-sm font-medium text-[#0A182E] border-x border-[#e0ddd8]">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() =>
                             updateQuantity(item.product.id, item.quantity + 1)
                           }
-                          className="w-8 h-8 flex items-center justify-center text-[#555555] hover:text-[#1a1a1a] transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-[#555555] hover:text-[#0A182E] transition-colors"
                           aria-label="Increase quantity"
                         >
                           <Plus className="size-3" />
                         </button>
                       </div>
-                      <p className="text-body-sm font-medium text-[#1a1a1a]">
+                      <p className="text-body-sm font-medium text-[#0A182E]">
                         {formatPrice(item.product.price * item.quantity)}
                       </p>
                     </div>
@@ -120,7 +120,7 @@ export function CartDrawer() {
           <div className="border-t border-[#e0ddd8] p-6 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-body-sm text-[#555555]">Subtotal</span>
-              <span className="text-body font-medium text-[#1a1a1a]">
+              <span className="text-body font-medium text-[#0A182E]">
                 {formatPrice(subtotal)}
               </span>
             </div>
@@ -129,14 +129,14 @@ export function CartDrawer() {
               <span className="text-body-sm text-[#4a8a5c]">Included</span>
             </div>
             <div className="flex items-center justify-between border-t border-[#e0ddd8] pt-4">
-              <span className="text-body font-medium text-[#1a1a1a]">Total</span>
+              <span className="text-body font-medium text-[#0A182E]">Total</span>
               <span className="text-h3">{formatPrice(subtotal)}</span>
             </div>
 
             <Link
               to="/checkout"
               onClick={closeCart}
-              className="flex items-center justify-center h-12 w-full bg-[#1a1a1a] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#1a1a1a]/90 transition-colors"
+              className="flex items-center justify-center h-12 w-full bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors"
             >
               Proceed to Checkout
             </Link>
@@ -144,7 +144,7 @@ export function CartDrawer() {
             <Link
               to="/cart"
               onClick={closeCart}
-              className="flex items-center justify-center h-10 w-full text-body-sm text-[#555555] hover:text-[#1a1a1a] transition-colors"
+              className="flex items-center justify-center h-10 w-full text-body-sm text-[#555555] hover:text-[#0A182E] transition-colors"
             >
               View Full Cart
             </Link>
