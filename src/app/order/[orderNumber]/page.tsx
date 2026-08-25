@@ -1,8 +1,7 @@
 "use client";
 
-import { use, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { Check, Copy, Upload, ArrowRight, Shield, Truck } from "lucide-react";
 import { Breadcrumbs } from "@/components/commerce/Breadcrumbs";
 
@@ -10,14 +9,14 @@ function formatPrice(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(n);
 }
 
-export default function OrderConfirmation({ params }: { params: Promise<{ orderNumber: string }> }) {
-  const { orderNumber } = use(params);
+export default function OrderConfirmation() {
+  const { orderNumber } = useParams<{ orderNumber: string }>();
   const [copied, setCopied] = useState(false);
 
   let orderData: any = null;
-  if (typeof window !== "undefined") {
-    try { orderData = JSON.parse(sessionStorage.getItem("lastOrder") || "null"); } catch {}
-  }
+  try {
+    orderData = JSON.parse(sessionStorage.getItem("lastOrder") || "null");
+  } catch {}
 
   if (!orderData || orderData.orderNumber !== orderNumber) {
     return (
@@ -32,7 +31,11 @@ export default function OrderConfirmation({ params }: { params: Promise<{ orderN
     );
   }
 
-  const handleCopy = () => { navigator.clipboard.writeText(orderData.orderNumber); setCopied(true); setTimeout(() => setCopied(false), 2000); };
+  const handleCopy = () => {
+    navigator.clipboard.writeText(orderData.orderNumber);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div>
@@ -56,13 +59,15 @@ export default function OrderConfirmation({ params }: { params: Promise<{ orderN
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 pb-20">
           <div className="lg:col-span-2 space-y-8">
-            {/* Order Details */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
               <h2 className="text-h3 text-[#0A182E] mb-4">Order Details</h2>
               <div className="space-y-4">
                 {orderData.items.map((item: any, i: number) => (
                   <div key={i} className="flex items-center justify-between py-3 border-b border-[#e0ddd8] last:border-b-0">
-                    <div><p className="text-body-sm font-medium text-[#0A182E]">{item.name}</p><p className="text-caption text-[#888888]">Qty: {item.quantity}</p></div>
+                    <div>
+                      <p className="text-body-sm font-medium text-[#0A182E]">{item.name}</p>
+                      <p className="text-caption text-[#888888]">Qty: {item.quantity}</p>
+                    </div>
                     <p className="text-body-sm font-medium text-[#0A182E]">{formatPrice(item.price * item.quantity)}</p>
                   </div>
                 ))}
@@ -74,7 +79,6 @@ export default function OrderConfirmation({ params }: { params: Promise<{ orderN
               </div>
             </div>
 
-            {/* Payment Info */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
               <h2 className="text-h3 text-[#0A182E] mb-4">Payment</h2>
               {orderData.paymentMethod === "bank_transfer" ? (
@@ -105,7 +109,6 @@ export default function OrderConfirmation({ params }: { params: Promise<{ orderN
               )}
             </div>
 
-            {/* Shipping Address */}
             <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">
               <h2 className="text-h3 text-[#0A182E] mb-4">Shipping Address</h2>
               <p className="text-body-sm text-[#555555]">
@@ -115,7 +118,6 @@ export default function OrderConfirmation({ params }: { params: Promise<{ orderN
             </div>
           </div>
 
-          {/* Sidebar */}
           <div>
             <div className="sticky top-24 space-y-6">
               <div className="bg-[#f3f1ee] border border-[#e0ddd8] rounded-[0.5rem] p-6">

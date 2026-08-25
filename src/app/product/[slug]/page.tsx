@@ -1,36 +1,24 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { products, getProduct } from '@/data/products';
-import { Breadcrumbs } from '@/components/commerce/Breadcrumbs';
-import { SectionHeader } from '@/components/commerce/SectionHeader';
-import { CTABlock } from '@/components/commerce/CTABlock';
-import { FAQAccordion } from '@/components/commerce/FAQAccordion';
-import { faqData } from '@/data/faq';
-import { ProductDetailContent } from './ProductDetailContent';
-import { ProductCard } from '@/components/commerce/ProductCard';
+"use client";
 
-export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
-}
+import { useParams } from "react-router-dom";
+import { products, getProduct } from "@/data/products";
+import { Breadcrumbs } from "@/components/commerce/Breadcrumbs";
+import { SectionHeader } from "@/components/commerce/SectionHeader";
+import { CTABlock } from "@/components/commerce/CTABlock";
+import { FAQAccordion } from "@/components/commerce/FAQAccordion";
+import { faqData } from "@/data/faq";
+import { ProductDetailContent } from "./ProductDetailContent";
+import { ProductCard } from "@/components/commerce/ProductCard";
 
-export function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Metadata {
-  // Note: In Next.js 15+, params is a Promise. We resolve it in generateMetadata.
-  // However for static generation we need a sync approach.
-  // We'll handle this client-side instead.
-  return {
-    title: 'Product',
-  };
-}
-
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const product = getProduct(slug);
+export default function ProductPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const product = getProduct(slug!);
 
   if (!product) {
     return (
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         <h1 className="text-h1 text-[#0A182E] mb-4">Product Not Found</h1>
-        <p className="text-body-lg text-[#555555] mb-8">The product you're looking for doesn't exist.</p>
+        <p className="text-body-lg text-[#555555] mb-8">The product you&apos;re looking for doesn&apos;t exist.</p>
         <a href="/cold-plunge-tubs" className="inline-flex items-center gap-2 h-12 px-8 bg-[#0A182E] text-[#faf9f7] text-body-sm font-medium rounded-[0.5rem] hover:bg-[#0A182E]/90 transition-colors">
           View All Products
         </a>
@@ -38,14 +26,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  const productFaqs = faqData.filter((f) => f.category === 'Products' || f.category === 'Setup');
+  const productFaqs = faqData.filter((f) => f.category === "Products" || f.category === "Setup");
   const relatedProducts = products.filter((p) => p.id !== product.id);
 
   return (
     <div>
       <ProductDetailContent product={product} />
 
-      {/* FAQ */}
       <section className="py-16 lg:py-24 bg-[#f3f1ee]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader overline="Questions" title="Product FAQ" />
@@ -55,7 +42,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-16 lg:py-24">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
