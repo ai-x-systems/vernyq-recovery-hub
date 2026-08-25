@@ -1,29 +1,30 @@
+"use client";
+
 import { useAuth } from "@/hooks/use-auth";
-import { Loader2 } from "lucide-react";
-import type { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
-export function RequireAuth({ children }: { children: ReactNode }) {
-  const { isLoading, isAuthenticated } = useAuth();
-  const location = useLocation();
+export function RequireAuth({ children, redirectUrl }: { children: React.ReactNode; redirectUrl?: string }) {
+  const { isAuth, isLoaded } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  if (isLoading) {
+  useEffect(() => {
+    if (isLoaded && !isAuth) {
+      const returnTo = redirectUrl || window.location.pathname;
+      router.push(`/auth?redirect=${encodeURIComponent(returnTo)}`);
+    }
+  }, [isAuth, isLoaded, redirectUrl, router]);
+
+  if (!isLoaded) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-background">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
-      </main>
+      <div className="min-h-screen flex items-center justify-center bg-[#faf9f7]">
+        <div className="text-[#888888] text-body-sm">Loading...</div>
+      </div>
     );
   }
 
-  if (!isAuthenticated) {
-    const returnTo = `${location.pathname}${location.search}`;
-    return (
-      <Navigate
-        to={`/auth?returnTo=${encodeURIComponent(returnTo)}`}
-        replace
-      />
-    );
-  }
+  if (!isAuth) return null;
 
-  return children;
+  return <>{children}</>;
 }
