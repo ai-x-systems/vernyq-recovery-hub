@@ -7,6 +7,7 @@ import { CTABlock } from '@/components/commerce/CTABlock';
 import { FAQAccordion } from '@/components/commerce/FAQAccordion';
 import { faqData } from '@/data/faq';
 import { ProductDetailContent } from './ProductDetailContent';
+import { ProductCard } from '@/components/commerce/ProductCard';
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
