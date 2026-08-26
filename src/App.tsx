@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { CartProvider } from "@/contexts/CartContext";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
@@ -27,9 +26,6 @@ import BlogPage from "@/app/blog/page";
 import BlogArticlePage from "@/app/blog/[slug]/page";
 import NotFoundPage from "@/app/not-found";
 
-const convexUrl = import.meta.env.VITE_CONVEX_URL;
-const convex = convexUrl ? new ConvexReactClient(convexUrl) : null;
-
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f7]">
@@ -43,39 +39,31 @@ function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 export function App() {
-  const content = (
-    <AppShell>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cold-plunge-tubs" element={<CollectionPage />} />
-        <Route path="/product/:slug" element={<ProductDetailPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/order/:orderNumber" element={<OrderConfirmationPage />} />
-        <Route path="/tracking" element={<TrackingPage />} />
-        <Route path="/science" element={<SciencePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/shipping" element={<ShippingPage />} />
-        <Route path="/warranty" element={<WarrantyPage />} />
-        <Route path="/returns" element={<ReturnsPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:slug" element={<BlogArticlePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </AppShell>
+  return (
+    <CartProvider>
+      <AppShell>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cold-plunge-tubs" element={<CollectionPage />} />
+          <Route path="/product/:slug" element={<ProductDetailPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order/:orderNumber" element={<OrderConfirmationPage />} />
+          <Route path="/tracking" element={<TrackingPage />} />
+          <Route path="/science" element={<SciencePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/warranty" element={<WarrantyPage />} />
+          <Route path="/returns" element={<ReturnsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </AppShell>
+    </CartProvider>
   );
-
-  if (convex) {
-    return (
-      <ConvexProvider client={convex}>
-        <CartProvider>{content}</CartProvider>
-      </ConvexProvider>
-    );
-  }
-
-  return <CartProvider>{content}</CartProvider>;
 }
