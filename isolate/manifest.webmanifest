@@ -1,16 +1,16 @@
 {
-  "name": "freebuff.com application",
-  "short_name": "freebuff.com",
-  "description": "freebuff.com application",
+  "name": "VERNYQ — Premium Cold Plunge Systems",
+  "short_name": "VERNYQ",
+  "description": "Premium all-in-one cold plunge systems engineered for home recovery. Integrated cooling, filtration, and insulation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#0A182E",
+  "theme_color": "#0A182E",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/logo.svg",
       "sizes": "any",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]

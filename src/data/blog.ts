@@ -60,7 +60,7 @@ The research on cold water immersion is evolving. While many people report subje
       "recovery science",
       "cold exposure",
     ],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=80",
   },
   {
     id: "2",
@@ -116,7 +116,7 @@ After setup, establish a simple maintenance routine:
     readingTime: "5 min read",
     category: "Setup",
     tags: ["cold plunge setup", "home cold plunge", "installation guide"],
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&q=80",
   },
   {
     id: "3",
@@ -177,7 +177,7 @@ The best cold plunge is the one you'll actually use regularly.
       "ice bath comparison",
       "cold plunge benefits",
     ],
-    image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1200&q=80",
   },
 ];
 

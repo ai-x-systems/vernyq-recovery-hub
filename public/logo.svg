@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <rect width="48" height="48" rx="8" fill="#0A182E"/>
-  <path d="M10 12L24 38L38 12H32L24 28L16 12H10Z" fill="#FFFFFF"/>
-  <path d="M24 8C24 8 20 14 20 16C20 18.2091 21.7909 20 24 20C26.2091 20 28 18.2091 28 16C28 14 24 8 24 8Z" fill="#0084FF"/>
+  <rect width="48" height="48" rx="10" fill="#0A182E"/>
+  <defs>
+    <linearGradient id="vgrad" x1="24" y1="8" x2="24" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#3399FF"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 12L24 38L38 12H31L24 28L17 12H10Z" fill="url(#vgrad)"/>
 </svg>

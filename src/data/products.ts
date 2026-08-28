@@ -36,10 +36,10 @@ export const products: Product[] = [
       "The VERNYQ V1 is a complete cold water immersion system engineered for home use. Every component — tub, chiller, filtration, and insulation — is integrated into one purpose-built unit. No third-party add-ons. No compromises. Just a premium recovery tool designed to perform, day after day.",
     price: 3499,
     images: [
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80",
+      "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=80",
+      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&q=80",
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80",
     ],
     badge: "Flagship",
     specifications: {
@@ -110,10 +110,10 @@ export const products: Product[] = [
       "The V1 Pro takes everything that makes the V1 exceptional and elevates it. Larger capacity, dual-stage filtration, and a more powerful chiller for athletes and dedicated users who demand the most from their cold plunge.",
     price: 4999,
     images: [
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80",
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80",
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=80",
+      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&q=80",
+      "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80",
     ],
     badge: "Premium",
     specifications: {

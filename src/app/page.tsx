@@ -37,8 +37,8 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center bg-[#0A182E] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1800&q=80"
-            alt="Cold plunge recovery system"
+            src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1800&q=80"
+            alt="Cold water recovery system"
             fill
             className="object-cover opacity-40"
             priority
@@ -175,7 +175,7 @@ export default function HomePage() {
             </div>
             <div className="order-1 lg:order-2">
               <div className="aspect-[4/3] rounded-[0.75rem] overflow-hidden bg-[#f3f1ee]">
-                <Image src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="Cold plunge engineering" width={1200} height={900} className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1200&q=80" alt="Cold plunge engineering" width={1200} height={900} className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <div className="aspect-[4/3] rounded-[0.75rem] overflow-hidden bg-[#f3f1ee]">
-                <Image src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80" alt="Home recovery routine" width={1200} height={900} className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&q=80" alt="Home recovery routine" width={1200} height={900} className="w-full h-full object-cover" />
               </div>
             </div>
             <div>

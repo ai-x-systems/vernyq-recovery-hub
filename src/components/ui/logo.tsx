@@ -9,8 +9,7 @@ export function VernyqLogo({
   variant = "full",
   color = "dark",
 }: LogoProps) {
-  const primary = color === "dark" ? "#0A182E" : "#FFFFFF";
-  const accent = "#0084FF";
+  const textPrimary = color === "dark" ? "#0A182E" : "#FFFFFF";
 
   if (variant === "icon") {
     return (
@@ -20,15 +19,15 @@ export function VernyqLogo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* V icon with water droplet accent */}
+        <defs>
+          <linearGradient id="vgrad-icon" x1="24" y1="8" x2="24" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#3399FF" />
+          </linearGradient>
+        </defs>
         <path
-          d="M8 10L24 40L40 10H33L24 30L15 10H8Z"
-          fill={primary}
-        />
-        {/* Water drop accent */}
-        <path
-          d="M24 8C24 8 21 13 21 15C21 16.6569 22.3431 18 24 18C25.6569 18 27 16.6569 27 15C27 13 24 8 24 8Z"
-          fill={accent}
+          d="M10 12L24 38L38 12H31L24 28L17 12H10Z"
+          fill="url(#vgrad-icon)"
         />
       </svg>
     );
@@ -47,9 +46,9 @@ export function VernyqLogo({
           y="32"
           fontFamily="Inter, sans-serif"
           fontSize="30"
-          fontWeight="600"
+          fontWeight="700"
           letterSpacing="0.18em"
-          fill={primary}
+          fill={textPrimary}
         >
           VERNYQ
         </text>
@@ -57,31 +56,32 @@ export function VernyqLogo({
     );
   }
 
+  // Full logo: gradient V icon + wordmark
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-        {/* V Icon */}
-        <svg
-          className="h-8 w-8 lg:h-10 lg:w-10"
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8 10L24 40L40 10H33L24 30L15 10H8Z"
-            fill={primary}
-          />
-          <path
-            d="M24 8C24 8 21 13 21 15C21 16.6569 22.3431 18 24 18C25.6569 18 27 16.6569 27 15C27 13 24 8 24 8Z"
-            fill={accent}
-          />
-        </svg>
-        {/* Wordmark */}
-        <span
-          className="text-xl lg:text-2xl font-semibold tracking-[0.18em]"
-          style={{ color: primary, fontFamily: "Inter, sans-serif" }}
-        >
-          VERNYQ
-        </span>
+    <div className={`flex items-center gap-2.5 ${className}`}>
+      <svg
+        className="h-8 w-8 lg:h-9 lg:w-9 shrink-0"
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="vgrad-full" x1="24" y1="8" x2="24" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#3399FF" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M10 12L24 38L38 12H31L24 28L17 12H10Z"
+          fill="url(#vgrad-full)"
+        />
+      </svg>
+      <span
+        className="text-xl lg:text-[1.35rem] font-bold tracking-[0.18em] leading-none"
+        style={{ color: textPrimary, fontFamily: "Inter, sans-serif" }}
+      >
+        VERNYQ
+      </span>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import { vlyPlugin } from "@vly-ai/integrations";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
@@ -6,11 +5,11 @@ import path from "path";
 const src = path.resolve(__dirname, "./src");
 
 export default defineConfig({
-  plugins: [vlyPlugin(), react()],
+  plugins: [react()],
   resolve: {
     alias: [
       { find: "@", replacement: src },
-      // Specific Next.js subpath aliases (must come before bare "next")
+      // Next.js subpath shims (specific before bare "next")
       { find: "next/link", replacement: `${src}/shims/next-link.tsx` },
       { find: "next/image", replacement: `${src}/shims/next-image.tsx` },
       { find: "next/navigation", replacement: `${src}/shims/next-navigation.ts` },

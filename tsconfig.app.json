@@ -25,8 +25,15 @@
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "next": ["./src/shims/next.ts"],
+      "next/link": ["./src/shims/next-link.tsx"],
+      "next/image": ["./src/shims/next-image.tsx"],
+      "next/navigation": ["./src/shims/next-navigation.ts"],
+      "next/font": ["./src/shims/next-font.ts"],
+      "next/font/google": ["./src/shims/next-font.ts"],
+      "next-themes": ["./src/shims/next-themes.ts"]
     }
   },
-  "include": ["src", "vly-toolbar-readonly.tsx"]
+  "include": ["src"]
 }
