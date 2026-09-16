@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Link from "next/link";
 import { VernyqLogo } from "@/components/ui/logo";
+import { supabase } from "@/lib/supabase";
 
 const footerLinks = {
   Shop: [{ label: "Cold Plunge Tubs", href: "/cold-plunge-tubs" }],
@@ -23,6 +25,26 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [subState, setSubState] = useState<"idle" | "sending" | "done">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubState("sending");
+    try {
+      const { error } = await supabase
+        .from("newsletter_subscribers")
+        .insert({ email });
+      if (error && error.code !== "23505") throw error; // ignore duplicate
+      setSubState("done");
+      setEmail("");
+    } catch (err) {
+      console.error("Subscribe failed:", err);
+      setSubState("idle");
+    }
+  };
+
   return (
     <footer className="bg-[#0A182E] text-[#faf9f7]/80">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,16 +75,23 @@ export function Footer() {
             </div>
             <div className="max-w-sm w-full">
               <h3 className="text-overline text-[#faf9f7]/50 mb-3">Stay Updated</h3>
-              <form className="flex" onSubmit={(e) => e.preventDefault()}>
+              {subState === "done" ? (
+                <p className="text-body-sm text-[#4a8a5c]">You're on the list. Welcome to VERNYQ.</p>
+              ) : (
+              <form className="flex" onSubmit={handleSubscribe}>
                 <input
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="flex-1 h-10 px-4 bg-[#faf9f7]/5 border border-[#faf9f7]/10 rounded-l-[0.5rem] text-body-sm text-[#faf9f7] placeholder:text-[#faf9f7]/30 focus:outline-none focus:border-[#0084FF]/50"
                 />
-                <button type="submit" className="h-10 px-5 bg-[#0084FF] text-white text-body-sm font-medium rounded-r-[0.5rem] hover:bg-[#0084FF]/90 transition-colors">
-                  Subscribe
+                <button type="submit" disabled={subState === "sending"} className="h-10 px-5 bg-[#0084FF] text-white text-body-sm font-medium rounded-r-[0.5rem] hover:bg-[#0084FF]/90 transition-colors disabled:opacity-50">
+                  {subState === "sending" ? "..." : "Subscribe"}
                 </button>
               </form>
+              )}
             </div>
           </div>
         </div>

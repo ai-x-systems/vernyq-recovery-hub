@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Shield, Lock, ArrowRight } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { formatPrice } from "@/data/products";
+import { supabase } from "@/lib/supabase";
 import { Breadcrumbs } from "@/components/commerce/Breadcrumbs";
 
 type PaymentMethod = "bank_transfer" | "payment_request";
@@ -39,22 +40,46 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (items.length === 0) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 1500));
-    const orderNumber = "VQ-" + Date.now().toString(36).toUpperCase();
-    const orderData = {
-      orderNumber,
-      email: form.email,
-      firstName: form.firstName,
-      lastName: form.lastName,
-      paymentMethod: form.paymentMethod,
-      items: items.map(i => ({ name: i.product.name, price: i.product.price, quantity: i.quantity })),
-      subtotal,
-      total: subtotal,
-      shippingAddress: { address: form.address, city: form.city, state: form.state, zip: form.zip },
-    };
-    clearCart();
-    sessionStorage.setItem("lastOrder", JSON.stringify(orderData));
-    router.push("/order/" + orderNumber);
+    try {
+      const orderNumber = "VQ-" + Date.now().toString(36).toUpperCase();
+      const orderData = {
+        orderNumber,
+        email: form.email,
+        firstName: form.firstName,
+        lastName: form.lastName,
+        paymentMethod: form.paymentMethod,
+        items: items.map(i => ({ name: i.product.name, price: i.product.price, quantity: i.quantity })),
+        subtotal,
+        total: subtotal,
+        shippingAddress: { address: form.address, city: form.city, state: form.state, zip: form.zip },
+      };
+      // Persist the order to Supabase
+      const { error } = await supabase.from("orders").insert({
+        order_number: orderNumber,
+        first_name: form.firstName,
+        last_name: form.lastName,
+        email: form.email,
+        phone: form.phone,
+        address: form.address,
+        city: form.city,
+        state: form.state,
+        zip: form.zip,
+        country: form.country,
+        payment_method: form.paymentMethod,
+        items: orderData.items,
+        subtotal,
+        total: subtotal,
+      });
+      if (error) throw error;
+      clearCart();
+      sessionStorage.setItem("lastOrder", JSON.stringify(orderData));
+      router.push("/order/" + orderNumber);
+    } catch (err) {
+      console.error("Order failed:", err);
+      alert("Something went wrong placing your order. Please try again or contact support@vernyq.com.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0) {
