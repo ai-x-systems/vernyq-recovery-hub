@@ -68,18 +68,32 @@ export interface Product {
   /** INTERNAL — never render customer-facing. */
   fulfillment: FulfillmentProfile;
   seo: ProductSeo;
+  /** Whether this product accepts customer reviews (toggle in admin). */
+  reviewsEnabled?: boolean;
 }
 
 // ------------------------------------------------------------
 // SHARED, VERIFIED SPECIFICATIONS (identical for V3 and A3)
 // ------------------------------------------------------------
-const SHARED_SPECIFICATIONS: Record<string, string> = {
+export const SHARED_SPECIFICATIONS: Record<string, string> = {
   Type: "All-in-one cold plunge (cooling + heating)",
   "Temperature Range": "1–40°C (34–104°F)",
   Chiller: "Integrated, 1 HP",
   Connectivity: "Wi-Fi with app control",
   Power: "110V / 60Hz (standard outlet)",
   Installation: "Freestanding",
+};
+
+export const DEFAULT_SHIPPING = {
+  estimated: "≈ 7 business days after dispatch",
+  note:
+    "Dispatch in roughly 3 business days after payment verification. Freight includes ground-level unloading at mainland U.S. residential addresses. Indoor placement and installation are not included. Remote or special-service areas may incur additional charges.",
+};
+
+export const DEFAULT_WARRANTY = {
+  duration: "1 year",
+  coverage:
+    "Covers qualifying non-human-caused damage with replacement parts, major component replacement, and whole-unit replacement in qualifying cases. Online customer service and after-sales engineering support included. After the warranty period, replacement parts may be chargeable.",
 };
 
 const SHARED_FEATURES: { title: string; description: string }[] = [

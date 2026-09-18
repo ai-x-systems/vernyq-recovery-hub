@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import {
   LayoutDashboard, Package, LogOut, RefreshCw,
-  MessageSquare, Users, Truck, DollarSign, ClipboardList, X, Mail, Lock,
+  MessageSquare, Users, Truck, DollarSign, ClipboardList, X, Mail, Lock, Plus,
 } from "lucide-react";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { ProductEditor } from "./ProductEditor";
+import type { ProductRow } from "./ProductRow";
+import { slugify } from "./ProductRow";
 
 // ---------- Types ----------
 type OrderRow = {
@@ -48,18 +51,6 @@ type SupplierRow = {
   due_date: string | null;
   paid: boolean;
   paid_at: string | null;
-};
-
-type ProductRow = {
-  id: string;
-  name: string;
-  slug: string;
-  price: number;
-  compare_at_price: number | null;
-  stock: number;
-  low_stock_threshold: number;
-  active: boolean;
-  images: string[] | null;
 };
 
 // ---------- Status config ----------
@@ -265,63 +256,99 @@ function OrdersSection() {
 function ProductsSection() {
   const [products, setProducts] = useState<ProductRow[]>([]);
   const [loading, setLoading] = useState(true);
-  const [expanded, setExpanded] = useState<string | null>(null);
-  const [imageInput, setImageInput] = useState<Record<string, string>>({});
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [busy, setBusy] = useState(false);
 
   const load = async () => {
     setLoading(true);
-    const { data } = await supabase.from("products").select("*").order("name");
+    const { data } = await supabase.from("products").select("*").order("created_at", { ascending: true });
     setProducts((data as unknown as ProductRow[]) || []);
     setLoading(false);
   };
 
   useEffect(() => { load(); }, []);
 
-  const updateProduct = async (id: string, patch: Partial<ProductRow>) => {
-    await supabase.from("products").update(patch).eq("id", id);
-    load();
+  const editing = products.find(p => p.id === editingId) || null;
+
+  const createProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = newName.trim();
+    if (!name || busy) return;
+    setBusy(true);
+    const baseSlug = slugify(name) || `product-${Date.now()}`;
+    let slug = baseSlug;
+    let n = 1;
+    // Ensure unique slug
+    while (products.some(p => p.slug === slug)) {
+      slug = `${baseSlug}-${++n}`;
+    }
+    const { data, error } = await supabase
+      .from("products")
+      .insert({
+        name,
+        slug,
+        price: newPrice ? parseFloat(newPrice) : 0,
+        active: false, // stays hidden until the merchant hits Active
+        reviews_enabled: true,
+      })
+      .select("id");
+    setBusy(false);
+    if (error || !data || data.length === 0) {
+      alert("Could not create the product. Check your connection and try again.");
+      return;
+    }
+    setNewName("");
+    setNewPrice("");
+    setCreating(false);
+    await load();
+    setEditingId((data[0] as { id: string }).id);
   };
 
-  const addImage = async (p: ProductRow) => {
-    const url = (imageInput[p.id] || "").trim();
-    if (!url) return;
-    const imgs = p.images || [];
-    await supabase.from("products").update({ images: [...imgs, url] }).eq("id", p.id);
-    setImageInput(prev => ({ ...prev, [p.id]: "" }));
-    load();
-  };
-
-  const removeImage = async (p: ProductRow, idx: number) => {
-    const imgs = (p.images || []).filter((_, i) => i !== idx);
-    await supabase.from("products").update({ images: imgs }).eq("id", p.id);
-    load();
-  };
-
-  const moveImage = async (p: ProductRow, idx: number, dir: -1 | 1) => {
-    const imgs = [...(p.images || [])];
-    const to = idx + dir;
-    if (to < 0 || to >= imgs.length) return;
-    [imgs[idx], imgs[to]] = [imgs[to], imgs[idx]];
-    await supabase.from("products").update({ images: imgs }).eq("id", p.id);
-    load();
-  };
+  if (editing) {
+    return (
+      <ProductEditor
+        product={editing}
+        onBack={() => { setEditingId(null); load(); }}
+        onSaved={load}
+        onDeleted={() => { setEditingId(null); load(); }}
+      />
+    );
+  }
 
   if (loading) return <p className="text-body-sm text-[#888888]">Loading products...</p>;
-  if (products.length === 0) return (
-    <p className="text-body-sm text-[#888888]">No products in the catalog. Run supabase-products-update.sql to seed V3 and A3.</p>
-  );
 
   return (
     <div>
-      <p className="text-body-sm text-[#888888] mb-4">Stock, pricing, images, and availability. Changes go live on the site immediately — no deploy needed.</p>
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <p className="text-body-sm text-[#888888]">{products.length} product{products.length !== 1 ? "s" : ""} · click a product to edit everything customers see</p>
+        <button onClick={() => setCreating(!creating)} className="ml-auto inline-flex items-center gap-1.5 h-9 px-4 bg-[#0A182E] text-white text-caption font-medium rounded-[0.375rem] hover:bg-[#0A182E]/90">
+          <Plus className="size-3.5" /> Add product
+        </button>
+      </div>
+
+      {creating && (
+        <form onSubmit={createProduct} className="flex flex-wrap gap-3 mb-4 bg-white border border-[#e0ddd8] rounded-[0.5rem] p-4">
+          <input required value={newName} onChange={e => setNewName(e.target.value)} placeholder="Product title (e.g. VERNYQ X5)"
+            className="flex-1 min-w-[200px] h-10 px-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF]" />
+          <input type="number" step="0.01" min="0" value={newPrice} onChange={e => setNewPrice(e.target.value)} placeholder="Price (USD)"
+            className="w-32 h-10 px-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF]" />
+          <button type="submit" disabled={busy} className="h-10 px-5 bg-[#0A182E] text-white text-caption font-medium rounded-[0.375rem] hover:bg-[#0A182E]/90 disabled:opacity-50">
+            {busy ? "Creating..." : "Create and edit"}
+          </button>
+          <p className="w-full text-caption text-[#888888] mt-1">Created hidden — fill in details, add images, then switch it Active when ready.</p>
+        </form>
+      )}
+
       <div className="space-y-3">
         {products.map(p => {
           const stockState = p.stock <= 0 ? "sold out" : p.stock <= p.low_stock_threshold ? "low stock" : "in stock";
           const imgs = p.images || [];
           return (
-          <div key={p.id} className="border border-[#e0ddd8] rounded-[0.5rem] bg-white overflow-hidden">
-            <button onClick={() => setExpanded(expanded === p.id ? null : p.id)}
-              className="w-full flex flex-wrap items-center gap-4 p-4 text-left hover:bg-[#faf9f7] transition-colors">
+            <button key={p.id} onClick={() => setEditingId(p.id)}
+              className="w-full flex flex-wrap items-center gap-4 p-4 text-left border border-[#e0ddd8] rounded-[0.5rem] bg-white hover:bg-[#faf9f7] transition-colors">
               <div className="w-12 h-12 rounded-[0.375rem] overflow-hidden bg-[#f3f1ee] shrink-0">
                 {imgs[0] && <img src={imgs[0]} alt="" className="w-full h-full object-cover" />}
               </div>
@@ -339,85 +366,8 @@ function ProductsSection() {
               <span className={`px-2.5 py-1 rounded-full border text-caption font-medium ${p.active ? "bg-[#f3f1ee] text-[#555555] border-[#e0ddd8]" : "bg-[#0A182E] text-white border-[#0A182E]"}`}>
                 {p.active ? "Active" : "Hidden"}
               </span>
-              <span className="text-caption text-[#888888]">{expanded === p.id ? "Collapse" : "Edit"}</span>
+              <span className="text-caption text-[#0084FF]">Edit →</span>
             </button>
-
-            {expanded === p.id && (
-              <div className="border-t border-[#e0ddd8] p-5 bg-[#faf9f7] space-y-6">
-                {/* Pricing */}
-                <div className="grid sm:grid-cols-3 gap-4">
-                  <div>
-                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Price (USD)</label>
-                    <input type="number" defaultValue={Number(p.price)} step="0.01" min="0"
-                      onBlur={e => { const v = parseFloat(e.target.value); if (v && v !== Number(p.price)) updateProduct(p.id, { price: v }); }}
-                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
-                  </div>
-                  <div>
-                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Compare-at price <span className="text-[#888888] font-normal">(optional sale strikethrough)</span></label>
-                    <input type="number" defaultValue={p.compare_at_price ? Number(p.compare_at_price) : ""} step="0.01" min="0" placeholder="—"
-                      onBlur={e => { const v = parseFloat(e.target.value); const next = isNaN(v) || v <= 0 ? null : v; if (next !== (p.compare_at_price ? Number(p.compare_at_price) : null)) updateProduct(p.id, { compare_at_price: next }); }}
-                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
-                  </div>
-                  <div>
-                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Low-stock alert at</label>
-                    <input type="number" defaultValue={p.low_stock_threshold} min="0"
-                      onBlur={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v !== p.low_stock_threshold) updateProduct(p.id, { low_stock_threshold: v }); }}
-                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
-                  </div>
-                </div>
-
-                {/* Stock + visibility */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Units on hand (internal — customers see a status, never this number)</label>
-                    <input type="number" defaultValue={p.stock} min="0"
-                      onBlur={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v !== p.stock) updateProduct(p.id, { stock: v }); }}
-                      className={`w-full h-10 px-3 border rounded-[0.375rem] text-body-sm focus:outline-none focus:border-[#0084FF] ${p.stock <= p.low_stock_threshold ? "border-amber-300 bg-amber-50 text-amber-700" : "bg-white border-[#e0ddd8] text-[#0A182E]"}`} />
-                    <p className="text-caption text-[#888888] mt-1.5">Currently: {stockState}</p>
-                  </div>
-                  <div>
-                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Visibility</label>
-                    <button onClick={() => updateProduct(p.id, { active: !p.active })}
-                      className={`h-10 px-4 rounded-[0.375rem] text-caption font-medium border transition-colors ${p.active ? "bg-green-50 text-green-700 border-green-200" : "bg-[#f3f1ee] text-[#888888] border-[#e0ddd8]"}`}>
-                      {p.active ? "Active — visible on storefront" : "Hidden — remove from storefront"}
-                    </button>
-                    <p className="text-caption text-[#888888] mt-1.5">Hidden products vanish from the shop, homepage, and “Also Consider” sections.</p>
-                  </div>
-                </div>
-
-                {/* Images */}
-                <div>
-                  <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Product images <span className="text-[#888888] font-normal">(first image is the primary card/gallery shot — first one is what customers see first)</span></label>
-                  {imgs.length === 0 ? (
-                    <p className="text-caption text-amber-600 mb-2">No images set — storefront is showing placeholder imagery. Add supplier photos here.</p>
-                  ) : (
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-3">
-                      {imgs.map((img, idx) => (
-                        <div key={idx} className="relative group aspect-square rounded-[0.375rem] overflow-hidden border border-[#e0ddd8] bg-white">
-                          <img src={img} alt={`${p.name} image ${idx + 1}`} className="w-full h-full object-cover" />
-                          {idx === 0 && <span className="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-[#0A182E] text-white text-[10px] font-medium rounded">Primary</span>}
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
-                            <button onClick={() => moveImage(p, idx, -1)} disabled={idx === 0} aria-label="Move image earlier"
-                              className="p-1.5 bg-white/90 rounded text-[#0A182E] disabled:opacity-40 hover:bg-white">←</button>
-                            <button onClick={() => removeImage(p, idx)} aria-label="Remove image"
-                              className="p-1.5 bg-white/90 rounded text-red-600 hover:bg-white">✕</button>
-                            <button onClick={() => moveImage(p, idx, 1)} disabled={idx === imgs.length - 1} aria-label="Move image later"
-                              className="p-1.5 bg-white/90 rounded text-[#0A182E] disabled:opacity-40 hover:bg-white">→</button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <div className="flex gap-2">
-                    <input value={imageInput[p.id] || ""} onChange={e => setImageInput(prev => ({ ...prev, [p.id]: e.target.value }))}
-                      placeholder="Paste image URL (https://...)" onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addImage(p); } }}
-                      className="flex-1 h-9 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF]" />
-                    <button onClick={() => addImage(p)} className="h-9 px-4 bg-[#0A182E] text-white text-caption font-medium rounded-[0.375rem] hover:bg-[#0A182E]/90">Add</button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
           );
         })}
       </div>
