@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Commerce pages that shouldn't be indexed
+Disallow: /cart
+Disallow: /checkout
+Disallow: /order/
+Disallow: /tracking
+
+# Internal
+Disallow: /admin
+
+Sitemap: https://vernyq.com/sitemap.xml
