@@ -4,7 +4,7 @@ import {
   MessageSquare, Users, Truck, DollarSign, ClipboardList, X, Mail, Lock,
 } from "lucide-react";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 // ---------- Types ----------
 type OrderRow = {
@@ -83,6 +83,26 @@ const STATUS_STYLES: Record<string, string> = {
 
 const fmt = (n: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(n);
+
+// ---------- Config warning ----------
+function MissingConfigNotice() {
+  return (
+    <div className="min-h-[70vh] flex items-center justify-center px-4 py-20">
+      <div className="w-full max-w-md bg-amber-50 border border-amber-200 rounded-[0.75rem] p-8">
+        <h1 className="text-h3 text-[#0A182E] mb-3">Supabase not configured</h1>
+        <p className="text-body-sm text-[#555555] leading-relaxed mb-4">
+          The environment variables <span className="font-mono text-[#0A182E]">VITE_SUPABASE_URL</span> and{" "}
+          <span className="font-mono text-[#0A182E]">VITE_SUPABASE_ANON_KEY</span> are missing from this environment.
+        </p>
+        <ol className="text-body-sm text-[#555555] space-y-2 list-decimal ml-4">
+          <li>Add both keys in Settings → Environment (Keys tab)</li>
+          <li>On Vercel: Project → Settings → Environment Variables, then redeploy</li>
+          <li>Values come from Supabase Dashboard → Project Settings → API</li>
+        </ol>
+      </div>
+    </div>
+  );
+}
 
 // ---------- Login ----------
 function LoginForm() {
@@ -534,6 +554,8 @@ export default function AdminPage() {
   if (authLoading) {
     return <div className="max-w-[1400px] mx-auto px-4 py-32 text-center text-body-sm text-[#888888]">Checking session...</div>;
   }
+
+  if (!isSupabaseConfigured) return <MissingConfigNotice />;
 
   if (!session) return <LoginForm />;
 

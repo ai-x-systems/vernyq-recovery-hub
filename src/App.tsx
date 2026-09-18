@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
+import { ProductsProvider } from "@/contexts/ProductsContext";
 import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
@@ -41,10 +42,10 @@ function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 export function App() {
-  return (
-    <AdminAuthProvider>
-      <CartProvider>
-        <AppShell>
+  return (        <AdminAuthProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <AppShell>
           <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cold-plunge-tubs" element={<CollectionPage />} />
@@ -65,10 +66,10 @@ export function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogArticlePage />} />
           <Route path="/admin" element={<AdminPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        </AppShell>
-      </CartProvider>
-    </AdminAuthProvider>
+          <Route path="*" element={<NotFoundPage />} />          </Routes>
+            </AppShell>
+            </CartProvider>
+          </ProductsProvider>
+        </AdminAuthProvider>
   );
 }

@@ -9,30 +9,23 @@ export const faqData: FaqItem[] = [
   // Products
   {
     id: "what-is-vernyc",
-    question: "What is the VERNYQ V1?",
+    question: "What is a VERNYQ all-in-one cold plunge?",
     answer:
-      "The VERNYQ V1 is a premium all-in-one cold plunge system designed for home use. It includes an insulated tub, integrated cooling chiller, filtration system, and UV sterilization — everything you need for consistent cold water immersion recovery.",
+      "A VERNYQ system is a complete cold water immersion unit in one package: the tub with an integrated 1 HP chiller that cools and heats from 1°C to 40°C, Wi-Fi app control, and operation on a standard 110V outlet. Fill it, plug it in, and set your temperature.",
     category: "Products",
   },
   {
-    id: "v1-vs-v1-pro",
-    question: "What's the difference between the V1 and V1 Pro?",
+    id: "v3-vs-a3",
+    question: "What's the difference between the V3 and the A3?",
     answer:
-      "The V1 Pro features a larger 400L capacity, a more powerful 1.0 HP chiller, dual-stage filtration with activated carbon, hydraulic-assist cover, and built-in Wi-Fi temperature monitoring. It also comes with an extended 2-year warranty.",
+      "Performance is identical — same integrated 1 HP chiller, same 1–40°C cooling and heating range, same Wi-Fi app control. The only difference is the exterior design, so you can pick the look you prefer.",
     category: "Products",
   },
   {
-    id: "what-is-included",
-    question: "What's included with my purchase?",
+    id: "does-it-heat",
+    question: "Can it heat water too, or only cool it?",
     answer:
-      "Each VERNYQ system includes the cold plunge tub, integrated chiller, filtration system, UV sterilization module, insulated cover, drainage adapter, setup guide, and manufacturer warranty. No additional accessories are required.",
-    category: "Products",
-  },
-  {
-    id: "dimensions-fit",
-    question: "Will the VERNYQ V1 fit in my space?",
-    answer:
-      "The V1 measures 180 cm × 80 cm × 75 cm (71\" × 31\" × 30\"). We recommend at least 30 cm (12\") of clearance on all sides for ventilation and maintenance. Measure your intended space and compare with our specifications.",
+      "It does both. The integrated chiller covers a full 1°C to 40°C range, so the same unit handles cold plunges, warm soaks, and contrast routines.",
     category: "Products",
   },
   // Cold Plunging
@@ -59,54 +52,32 @@ export const faqData: FaqItem[] = [
   },
   // Setup
   {
-    id: "setup-time",
-    question: "How long does setup take?",
-    answer:
-      "Setup typically takes 30–60 minutes. Connect the drainage adapter, fill with water, plug in, and set your target temperature. The chiller will bring water to temperature in 2–6 hours depending on ambient conditions.",
-    category: "Setup",
-  },
-  {
     id: "power-requirement",
-    question: "What power does the V1 require?",
+    question: "What power does the unit require?",
     answer:
-      "The V1 uses a standard 110V / 60Hz outlet — the same as most household appliances in the US. No special electrical work is required. We recommend a dedicated circuit to avoid sharing with high-draw appliances.",
+      "Every VERNYQ system runs on a standard 110V / 60Hz outlet — the same as most household appliances in the US. No special electrical work is required. We recommend a dedicated circuit to avoid sharing with high-draw appliances.",
     category: "Setup",
   },
   {
     id: "where-to-place",
     question: "Where should I place my cold plunge?",
     answer:
-      "The V1 can be placed indoors or outdoors on a flat, level surface. Ensure adequate drainage nearby, access to a power outlet, and at least 30 cm of clearance around the unit for ventilation.",
+      "The unit is freestanding and can be placed indoors or outdoors on a flat, level surface. Ensure adequate drainage nearby and access to a power outlet, with clearance around the unit for ventilation.",
     category: "Setup",
-  },
-  // Maintenance
-  {
-    id: "water-changes",
-    question: "How often do I need to change the water?",
-    answer:
-      "With the built-in filtration and UV system, most users change water every 2–4 weeks depending on usage. The filter cartridge should be replaced every 3–6 months.",
-    category: "Maintenance",
-  },
-  {
-    id: "filter-replacement",
-    question: "How do I replace the filter?",
-    answer:
-      "The filter cartridge is easily accessible and can be replaced in minutes without tools. Simply open the filter compartment, remove the old cartridge, and insert the new one. Replacement filters are available on our website.",
-    category: "Maintenance",
   },
   // Shipping
   {
     id: "shipping-time",
     question: "How long does shipping take?",
     answer:
-      "Standard delivery takes 5–10 business days for the V1 and 7–14 business days for the V1 Pro. White-glove delivery is available for the V1 Pro, which includes room-of-choice placement and packaging removal.",
+      "We dispatch from our U.S. warehouse roughly 3 business days after payment verification, and delivery typically takes about 7 business days after dispatch.",
     category: "Shipping",
   },
   {
     id: "shipping-cost",
     question: "Is shipping included in the price?",
     answer:
-      "Yes. Freight shipping within the contiguous United States is included in the product price. White-glove delivery options may vary by location.",
+      "Yes. Freight shipping within the contiguous United States is included in the product price, including ground-level unloading at residential addresses. Remote or special-service areas may incur additional charges, which we confirm before processing your order.",
     category: "Shipping",
   },
   {
@@ -121,7 +92,7 @@ export const faqData: FaqItem[] = [
     id: "warranty-coverage",
     question: "What does the warranty cover?",
     answer:
-      "The V1 includes a 1-year manufacturer warranty. The V1 Pro includes a 2-year warranty. Coverage includes manufacturing defects in the tub, chiller, filtration system, and structural components.",
+      "Every VERNYQ system includes a 1-year manufacturer warranty covering qualifying non-human-caused damage: replacement parts, major component replacement, and whole-unit replacement in qualifying cases. Online customer service and after-sales engineering support are included. See our Warranty page for full details.",
     category: "Warranty",
   },
   {

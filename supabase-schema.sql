@@ -73,17 +73,18 @@ create table if not exists supplier_payments (
   created_at timestamptz not null default now()
 );
 
--- ---------- SEED PRODUCTS (from current static data) ----------
+-- ---------- SEED PRODUCTS (V3 + A3 — supplier-confirmed data) ----------
+-- stock = internal units on hand (the site shows a status, never this count)
 insert into products (id, name, slug, price, description, short_description, images, stock)
 values
-  ('vernyq-v1', 'VERNYQ V1', 'vernyq-v1', 2999.00,
-   'The VERNYQ V1 all-in-one cold plunge system. Integrated cooling, filtration, and insulation — ready when you are.',
-   'All-in-one cold plunge. 37°F cooling. Plug and plunge.',
-   '[]'::jsonb, 10),
-  ('vernyq-v1-pro', 'VERNYQ V1 Pro', 'vernyq-v1-pro', 4499.00,
-   'The VERNYQ V1 Pro — maximum cooling power, faster chill-down, and white-glove delivery. Built for the dedicated.',
-   'Maximum power cold plunge. 33°F cooling. White-glove delivery.',
-   '[]'::jsonb, 10)
+  ('vernyq-v3', 'VERNYQ V3', 'vernyq-v3-all-in-one-cold-plunge', 3999.00,
+   'The VERNYQ V3 is a complete cold water immersion system in a single freestanding unit. Integrated 1 HP chiller cools and heats across 1–40°C, with Wi-Fi app control on a standard 110V outlet.',
+   'Cooling + heating, 1–40°C. Integrated 1 HP chiller, Wi-Fi app control, standard 110V outlet.',
+   '[]'::jsonb, 6),
+  ('vernyq-a3', 'VERNYQ A3', 'vernyq-a3-all-in-one-cold-plunge', 3999.00,
+   'The VERNYQ A3 delivers identical performance to the V3 — same 1 HP chiller, same 1–40°C range, same Wi-Fi app control — in a different exterior design.',
+   'Cooling + heating, 1–40°C. Integrated 1 HP chiller, Wi-Fi app control, standard 110V outlet.',
+   '[]'::jsonb, 21)
 on conflict (id) do nothing;
 
 -- ============================================================

@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import type { Product } from "@/data/products";
+import { products as staticProducts } from "@/data/products";
 import {
   createEmptyCart,
   calculateSubtotal,
@@ -28,9 +29,44 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
+const CART_STORAGE_KEY = "vernyq-cart-v1";
+
+type StoredLine = { productId: string; quantity: number };
+
+function loadStoredItems(): CartItem[] {
+  try {
+    const raw = localStorage.getItem(CART_STORAGE_KEY);
+    if (!raw) return createEmptyCart();
+    const lines = JSON.parse(raw) as StoredLine[];
+    if (!Array.isArray(lines)) return createEmptyCart();
+    // Rehydrate against the current static catalog (supplier-verified data).
+    // Prices refresh from Supabase via ProductsContext consumers reading live products.
+    return lines
+      .map((line) => {
+        const product = staticProducts.find((p) => p.id === line.productId);
+        if (!product) return null;
+        return { product, quantity: Math.max(1, Math.floor(line.quantity)) };
+      })
+      .filter((i): i is CartItem => i !== null);
+  } catch {
+    return createEmptyCart();
+  }
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>(createEmptyCart);
+  const [items, setItems] = useState<CartItem[]>(loadStoredItems);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CART_STORAGE_KEY,
+        JSON.stringify(items.map((i) => ({ productId: i.product.id, quantity: i.quantity })))
+      );
+    } catch {
+      // storage full/unavailable — cart stays in-memory only
+    }
+  }, [items]);
 
   const addItem = useCallback((product: Product, quantity = 1) => {
     setItems((prev) => {

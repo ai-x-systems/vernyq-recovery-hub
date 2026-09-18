@@ -11,7 +11,8 @@ import {
   Shield,
   Award,
 } from "lucide-react";
-import { products, formatPrice } from "@/data/products";
+import { useProducts } from "@/contexts/ProductsContext";
+import { formatPrice } from "@/data/products";
 import { blogPosts } from "@/data/blog";
 import { faqData } from "@/data/faq";
 import { ProductCard } from "@/components/commerce/ProductCard";
@@ -28,6 +29,7 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  const { products } = useProducts();
   const flagship = products[0];
   const previewFaqs = faqData.slice(0, 6);
 
@@ -94,7 +96,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-3 text-body-sm text-[#555555]">
                   <Droplets className="size-4 text-[#0084FF] flex-shrink-0" />
-                  {flagship.specifications["Filtration"]}
+                  Cooling &amp; heating in one unit
                 </div>
                 <div className="flex items-center gap-3 text-body-sm text-[#555555]">
                   <Zap className="size-4 text-[#0084FF] flex-shrink-0" />
@@ -125,12 +127,12 @@ export default function HomePage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
             {[
-              { icon: Zap, title: "All-in-One Design", description: "Integrated chiller, filtration, and insulation. No third-party add-ons required." },
-              { icon: Shield, title: "Premium Materials", description: "Marine-grade stainless steel exterior with medical-grade interior liner." },
-              { icon: Award, title: "Consistent Performance", description: "Maintain your exact target temperature, every session, without ice." },
-              { icon: Home, title: "Home-Ready", description: "Standard 110V outlet. No special electrical work. Set up in under an hour." },
-              { icon: Repeat, title: "Low Maintenance", description: "Built-in filtration and UV sterilization. Change water every 2–4 weeks." },
-              { icon: Timer, title: "Always Ready", description: "Set your temperature. Walk outside. Plunge. No preparation needed." },
+              { icon: Zap, title: "All-in-One Design", description: "Tub and 1 HP chiller in a single integrated unit. No third-party add-ons required." },
+              { icon: Thermometer, title: "Cooling & Heating", description: "Full 1–40°C range from the same unit — cold plunges, warm soaks, contrast routines." },
+              { icon: Award, title: "Consistent Performance", description: "Set your target temperature and the integrated chiller holds it, every session, without ice." },
+              { icon: Home, title: "Home-Ready", description: "Standard 110V outlet and freestanding design. No special wiring or installation." },
+              { icon: Repeat, title: "U.S. Warehouse Stock", description: "Dispatch in roughly 3 business days after payment verification. Delivery in about a week." },
+              { icon: Timer, title: "App Control", description: "Set and monitor your water temperature from your phone over Wi-Fi." },
             ].map((item) => (
               <div key={item.title} className="bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.5rem] p-6 lg:p-8">
                 <div className="size-10 rounded-[0.5rem] bg-[#0084FF]/10 flex items-center justify-center mb-4">
@@ -270,7 +272,7 @@ export default function HomePage() {
       {/* PRODUCT RANGE */}
       <section className="py-20 lg:py-28">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader overline="Our Systems" title="Cold Plunge Systems" description="Two tiers of premium recovery. Both designed as complete all-in-one solutions." />
+          <SectionHeader overline="Our Systems" title="Cold Plunge Systems" description="Two designs, one standard of performance. Both are complete all-in-one units — identical 1–40°C cooling and heating, different exteriors." />
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mt-14 max-w-4xl mx-auto">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
