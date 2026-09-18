@@ -7,8 +7,9 @@ import { supabase, isSupabaseConfigured } from "@/lib/supabase";
  *
  * Static data (src/data/products.ts) is the supplier-verified source of truth
  * for content: names, specs, features, shipping, warranty, SEO. Supabase is the
- * source of truth for OPERATIONAL state — price, stock, and active visibility —
- * so edits made in the admin dashboard go live immediately without a redeploy.
+ * source of truth for OPERATIONAL state — price, stock, active visibility,
+ * images, and compare-at price — so edits made in the admin dashboard go live
+ * immediately without a redeploy.
  *
  * When Supabase is unconfigured or has no matching rows, the static catalog
  * stands in, so the site always renders.
@@ -31,9 +32,11 @@ type CatalogRow = {
   id: string;
   slug: string;
   price: number;
+  compare_at_price: number | null;
   stock: number;
   low_stock_threshold: number;
   active: boolean;
+  images: string[] | null;
 };
 
 export function ProductsProvider({ children }: { children: ReactNode }) {
@@ -46,7 +49,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
     supabase
       .from("products")
-      .select("id, slug, price, stock, low_stock_threshold, active")
+      .select("id, slug, price, compare_at_price, stock, low_stock_threshold, active, images")
       .then(({ data }) => {
         if (cancelled || !data || data.length === 0) {
           if (!cancelled) setSynced(true);
@@ -62,9 +65,18 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
             lowStockThreshold: row.low_stock_threshold,
           };
           const stockStatus = deriveStockStatus(inventory);
+          // Admin-managed images replace the static placeholders entirely when
+          // present (non-empty array); otherwise the static gallery stands in.
+          const dbImages = Array.isArray(row.images) ? row.images.filter(Boolean) : [];
+          const compareAt =
+            row.compare_at_price !== null && Number(row.compare_at_price) > Number(row.price)
+              ? Number(row.compare_at_price)
+              : undefined;
           return {
             ...p,
             price: Number(row.price),
+            compareAtPrice: compareAt,
+            images: dbImages.length > 0 ? dbImages : p.images,
             inventory,
             stockStatus,
             inStock: isPurchasable(stockStatus),

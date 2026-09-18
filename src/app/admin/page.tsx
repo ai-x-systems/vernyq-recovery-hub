@@ -55,9 +55,11 @@ type ProductRow = {
   name: string;
   slug: string;
   price: number;
+  compare_at_price: number | null;
   stock: number;
   low_stock_threshold: number;
   active: boolean;
+  images: string[] | null;
 };
 
 // ---------- Status config ----------
@@ -263,6 +265,8 @@ function OrdersSection() {
 function ProductsSection() {
   const [products, setProducts] = useState<ProductRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [imageInput, setImageInput] = useState<Record<string, string>>({});
 
   const load = async () => {
     setLoading(true);
@@ -278,39 +282,144 @@ function ProductsSection() {
     load();
   };
 
+  const addImage = async (p: ProductRow) => {
+    const url = (imageInput[p.id] || "").trim();
+    if (!url) return;
+    const imgs = p.images || [];
+    await supabase.from("products").update({ images: [...imgs, url] }).eq("id", p.id);
+    setImageInput(prev => ({ ...prev, [p.id]: "" }));
+    load();
+  };
+
+  const removeImage = async (p: ProductRow, idx: number) => {
+    const imgs = (p.images || []).filter((_, i) => i !== idx);
+    await supabase.from("products").update({ images: imgs }).eq("id", p.id);
+    load();
+  };
+
+  const moveImage = async (p: ProductRow, idx: number, dir: -1 | 1) => {
+    const imgs = [...(p.images || [])];
+    const to = idx + dir;
+    if (to < 0 || to >= imgs.length) return;
+    [imgs[idx], imgs[to]] = [imgs[to], imgs[idx]];
+    await supabase.from("products").update({ images: imgs }).eq("id", p.id);
+    load();
+  };
+
   if (loading) return <p className="text-body-sm text-[#888888]">Loading products...</p>;
+  if (products.length === 0) return (
+    <p className="text-body-sm text-[#888888]">No products in the catalog. Run supabase-products-update.sql to seed V3 and A3.</p>
+  );
 
   return (
     <div>
-      <p className="text-body-sm text-[#888888] mb-4">Stock, pricing, and availability. Changes go live on the site immediately.</p>
+      <p className="text-body-sm text-[#888888] mb-4">Stock, pricing, images, and availability. Changes go live on the site immediately — no deploy needed.</p>
       <div className="space-y-3">
-        {products.map(p => (
-          <div key={p.id} className="border border-[#e0ddd8] rounded-[0.5rem] bg-white p-4">
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex-1 min-w-[180px]">
+        {products.map(p => {
+          const stockState = p.stock <= 0 ? "sold out" : p.stock <= p.low_stock_threshold ? "low stock" : "in stock";
+          const imgs = p.images || [];
+          return (
+          <div key={p.id} className="border border-[#e0ddd8] rounded-[0.5rem] bg-white overflow-hidden">
+            <button onClick={() => setExpanded(expanded === p.id ? null : p.id)}
+              className="w-full flex flex-wrap items-center gap-4 p-4 text-left hover:bg-[#faf9f7] transition-colors">
+              <div className="w-12 h-12 rounded-[0.375rem] overflow-hidden bg-[#f3f1ee] shrink-0">
+                {imgs[0] && <img src={imgs[0]} alt="" className="w-full h-full object-cover" />}
+              </div>
+              <div className="flex-1 min-w-[160px]">
                 <p className="text-body-sm font-medium text-[#0A182E]">{p.name}</p>
                 <p className="text-caption text-[#888888]">{p.slug}</p>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-caption text-[#888888]">Price</span>
-                <input type="number" defaultValue={Number(p.price)} step="0.01" min="0"
-                  onBlur={e => { const v = parseFloat(e.target.value); if (v && v !== Number(p.price)) updateProduct(p.id, { price: v }); }}
-                  className="w-24 h-9 px-3 bg-[#faf9f7] border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-caption text-[#888888]">Stock</span>
-                <input type="number" defaultValue={p.stock} min="0"
-                  onBlur={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v !== p.stock) updateProduct(p.id, { stock: v }); }}
-                  className={`w-20 h-9 px-3 border rounded-[0.375rem] text-body-sm focus:outline-none focus:border-[#0084FF] ${p.stock <= p.low_stock_threshold ? "border-amber-300 bg-amber-50 text-amber-700" : "bg-[#faf9f7] border-[#e0ddd8] text-[#0A182E]"}`} />
-                {p.stock <= p.low_stock_threshold && <span className="text-caption text-amber-600">Low</span>}
-              </div>
-              <button onClick={() => updateProduct(p.id, { active: !p.active })}
-                className={`h-9 px-4 rounded-[0.375rem] text-caption font-medium border transition-colors ${p.active ? "bg-green-50 text-green-700 border-green-200" : "bg-[#f3f1ee] text-[#888888] border-[#e0ddd8]"}`}>
+              <span className="text-body-sm font-medium text-[#0A182E]">{fmt(Number(p.price))}</span>
+              <span className={`px-2.5 py-1 rounded-full border text-caption font-medium ${
+                stockState === "sold out" ? "bg-red-50 text-red-700 border-red-200"
+                : stockState === "low stock" ? "bg-amber-50 text-amber-700 border-amber-200"
+                : "bg-green-50 text-green-700 border-green-200"}`}>
+                {stockState}
+              </span>
+              <span className={`px-2.5 py-1 rounded-full border text-caption font-medium ${p.active ? "bg-[#f3f1ee] text-[#555555] border-[#e0ddd8]" : "bg-[#0A182E] text-white border-[#0A182E]"}`}>
                 {p.active ? "Active" : "Hidden"}
-              </button>
-            </div>
+              </span>
+              <span className="text-caption text-[#888888]">{expanded === p.id ? "Collapse" : "Edit"}</span>
+            </button>
+
+            {expanded === p.id && (
+              <div className="border-t border-[#e0ddd8] p-5 bg-[#faf9f7] space-y-6">
+                {/* Pricing */}
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Price (USD)</label>
+                    <input type="number" defaultValue={Number(p.price)} step="0.01" min="0"
+                      onBlur={e => { const v = parseFloat(e.target.value); if (v && v !== Number(p.price)) updateProduct(p.id, { price: v }); }}
+                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
+                  </div>
+                  <div>
+                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Compare-at price <span className="text-[#888888] font-normal">(optional sale strikethrough)</span></label>
+                    <input type="number" defaultValue={p.compare_at_price ? Number(p.compare_at_price) : ""} step="0.01" min="0" placeholder="—"
+                      onBlur={e => { const v = parseFloat(e.target.value); const next = isNaN(v) || v <= 0 ? null : v; if (next !== (p.compare_at_price ? Number(p.compare_at_price) : null)) updateProduct(p.id, { compare_at_price: next }); }}
+                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
+                  </div>
+                  <div>
+                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Low-stock alert at</label>
+                    <input type="number" defaultValue={p.low_stock_threshold} min="0"
+                      onBlur={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v !== p.low_stock_threshold) updateProduct(p.id, { low_stock_threshold: v }); }}
+                      className="w-full h-10 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] focus:outline-none focus:border-[#0084FF]" />
+                  </div>
+                </div>
+
+                {/* Stock + visibility */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Units on hand (internal — customers see a status, never this number)</label>
+                    <input type="number" defaultValue={p.stock} min="0"
+                      onBlur={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v !== p.stock) updateProduct(p.id, { stock: v }); }}
+                      className={`w-full h-10 px-3 border rounded-[0.375rem] text-body-sm focus:outline-none focus:border-[#0084FF] ${p.stock <= p.low_stock_threshold ? "border-amber-300 bg-amber-50 text-amber-700" : "bg-white border-[#e0ddd8] text-[#0A182E]"}`} />
+                    <p className="text-caption text-[#888888] mt-1.5">Currently: {stockState}</p>
+                  </div>
+                  <div>
+                    <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Visibility</label>
+                    <button onClick={() => updateProduct(p.id, { active: !p.active })}
+                      className={`h-10 px-4 rounded-[0.375rem] text-caption font-medium border transition-colors ${p.active ? "bg-green-50 text-green-700 border-green-200" : "bg-[#f3f1ee] text-[#888888] border-[#e0ddd8]"}`}>
+                      {p.active ? "Active — visible on storefront" : "Hidden — remove from storefront"}
+                    </button>
+                    <p className="text-caption text-[#888888] mt-1.5">Hidden products vanish from the shop, homepage, and “Also Consider” sections.</p>
+                  </div>
+                </div>
+
+                {/* Images */}
+                <div>
+                  <label className="text-caption font-medium text-[#0A182E] block mb-1.5">Product images <span className="text-[#888888] font-normal">(first image is the primary card/gallery shot — first one is what customers see first)</span></label>
+                  {imgs.length === 0 ? (
+                    <p className="text-caption text-amber-600 mb-2">No images set — storefront is showing placeholder imagery. Add supplier photos here.</p>
+                  ) : (
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-3">
+                      {imgs.map((img, idx) => (
+                        <div key={idx} className="relative group aspect-square rounded-[0.375rem] overflow-hidden border border-[#e0ddd8] bg-white">
+                          <img src={img} alt={`${p.name} image ${idx + 1}`} className="w-full h-full object-cover" />
+                          {idx === 0 && <span className="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-[#0A182E] text-white text-[10px] font-medium rounded">Primary</span>}
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                            <button onClick={() => moveImage(p, idx, -1)} disabled={idx === 0} aria-label="Move image earlier"
+                              className="p-1.5 bg-white/90 rounded text-[#0A182E] disabled:opacity-40 hover:bg-white">←</button>
+                            <button onClick={() => removeImage(p, idx)} aria-label="Remove image"
+                              className="p-1.5 bg-white/90 rounded text-red-600 hover:bg-white">✕</button>
+                            <button onClick={() => moveImage(p, idx, 1)} disabled={idx === imgs.length - 1} aria-label="Move image later"
+                              className="p-1.5 bg-white/90 rounded text-[#0A182E] disabled:opacity-40 hover:bg-white">→</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                    <input value={imageInput[p.id] || ""} onChange={e => setImageInput(prev => ({ ...prev, [p.id]: e.target.value }))}
+                      placeholder="Paste image URL (https://...)" onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addImage(p); } }}
+                      className="flex-1 h-9 px-3 bg-white border border-[#e0ddd8] rounded-[0.375rem] text-body-sm text-[#0A182E] placeholder:text-[#888888] focus:outline-none focus:border-[#0084FF]" />
+                    <button onClick={() => addImage(p)} className="h-9 px-4 bg-[#0A182E] text-white text-caption font-medium rounded-[0.375rem] hover:bg-[#0A182E]/90">Add</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
