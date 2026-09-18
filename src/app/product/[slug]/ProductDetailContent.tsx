@@ -5,14 +5,16 @@ import Link from "next/link";
 import { Truck, Shield, RotateCcw, Thermometer, Wifi, Zap } from "lucide-react";
 import { formatPrice, type Product } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
+import { useProductReviews } from "@/lib/reviews";
 import { Breadcrumbs } from "@/components/commerce/Breadcrumbs";
 import { SectionHeader } from "@/components/commerce/SectionHeader";
 import { SpecTable } from "@/components/commerce/SpecTable";
 import { Seo } from "@/components/commerce/Seo";
 import { ProductGallery } from "@/components/commerce/ProductGallery";
 import { BuyBox } from "@/components/commerce/BuyBox";
+import { ProductReviews } from "@/components/commerce/ProductReviews";
 
-function buildProductJsonLd(product: Product) {
+function buildProductJsonLd(product: Product, reviews?: { count: number; average: number }) {
   const origin = typeof window !== "undefined" ? window.location.origin : "https://vernyq.com";
   return {
     "@context": "https://schema.org",
@@ -23,6 +25,15 @@ function buildProductJsonLd(product: Product) {
     brand: { "@type": "Brand", name: "VERNYQ" },
     sku: product.fulfillment.supplierSku,
     url: `${origin}/product/${product.slug}`,
+    ...(reviews && reviews.count > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: reviews.average.toFixed(1),
+            reviewCount: reviews.count,
+          },
+        }
+      : {}),
     offers: {
       "@type": "Offer",
       url: `${origin}/product/${product.slug}`,
@@ -68,6 +79,10 @@ export function ProductDetailContent({ product }: { product: Product }) {
   const { addItem } = useCart();
   const available = product.inStock;
   const [added, setAdded] = useState(false);
+  // Reviews feed both the public section and the aggregateRating JSON-LD.
+  const { count: reviewCount, average: reviewAverage } = useProductReviews(
+    product.reviewsEnabled === false ? undefined : product.id
+  );
 
   const handleAdd = () => {
     addItem(product, 1);
@@ -83,7 +98,7 @@ export function ProductDetailContent({ product }: { product: Product }) {
         canonicalPath={`/product/${product.slug}`}
         type="product"
         image={product.images[0]}
-        jsonLd={buildProductJsonLd(product)}
+        jsonLd={buildProductJsonLd(product, { count: reviewCount, average: reviewAverage })}
       />
 
       {/* ---------- HERO: gallery + buy box ---------- */}
@@ -247,6 +262,9 @@ export function ProductDetailContent({ product }: { product: Product }) {
           </div>
         </div>
       </section>
+
+      {/* ---------- REVIEWS ---------- */}
+      {product.reviewsEnabled !== false && <ProductReviews productId={product.id} productName={product.name} />}
 
       {/* ---------- MOBILE STICKY PURCHASE BAR ---------- */}
       <div className="lg:hidden sticky bottom-0 z-40 bg-[#faf9f7]/95 backdrop-blur-md border-t border-[#e0ddd8] px-4 py-3">
